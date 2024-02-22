@@ -6,13 +6,13 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/22 16:13:37 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:29:06 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "ft_printf.h"
+# include "libft.h"
 
 #endif

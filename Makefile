@@ -32,9 +32,11 @@ $(LIBFT):
 bonus: $(BONUS)
 
 clean:
+	@make --no-print-directory -C $(LIBFTHD) clean
 
 fclean: clean
 	$(RM) $(NAME) $(BONUS)
+	@make --no-print-directory -C $(LIBFTHD) fclean
 
 re: fclean all
 
