@@ -21,7 +21,7 @@ LIBFTCC = -I $(LIBFTHD) $(LIBFT)
 
 MLXD = mlx/
 MLXL = $(MLXD)libmlx.a
-MLXCC = -I $(MLXD) -L $(MLXD) -lmlx -lXext -lX11 -lm 
+MLXCC = -I $(MLXD) -L $(MLXD) -lmlx -framework OpenGL -framework AppKit
 
 OPENGL = -framework OpenGL -framework AppKit
 
@@ -37,8 +37,6 @@ $(LIBFT):
 	@make --no-print-directory -C $(LIBFTHD)
 
 $(MLXL):
-	@git submodule init
-	@git submodule update
 	@make --no-print-directory -C $(MLXD)
 
 bonus: $(BONUS)
@@ -50,7 +48,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME) $(BONUS)
 	@make --no-print-directory -C $(LIBFTHD) fclean
-	@make --no-print-directory -C $(MLXD) fclean
 
 re: fclean all
 
