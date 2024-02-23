@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/22 17:29:06 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/23 00:32:51 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 # define SO_LONG_H
 
 # include "libft.h"
+# include "mlx.h"
+# include <stdlib.h>
 
 #endif

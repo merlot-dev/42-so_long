@@ -15,13 +15,20 @@ BONUSC =
 
 BONUSS = $(addprefix $(BONUSD), $(BONUSC))
 
-LIBFT = libft/libft.a
 LIBFTHD = libft/
+LIBFT = $(LIBFTHD)libft.a
+LIBFTCC = -I $(LIBFTHD) $(LIBFT)
+
+MLXD = mlx/
+MLXL = $(MLXD)libmlx.a
+MLXCC = -I $(MLXD) -L $(MLXD) -lmlx -lXext -lX11 -lm 
+
+OPENGL = -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(SRCS) Makefile $(LIBFT)
-	$(CC) $(CFLAGS) -I $(HEADD) -I $(LIBFTHD) -o $(NAME) $(SRCS) $(LIBFT)
+$(NAME): $(SRCS) Makefile $(LIBFT) $(MLXL)
+	$(CC) $(CFLAGS) -I $(HEADD) -o $(NAME) $(SRCS) $(LIBFTCC) $(MLXCC)
 
 $(BONUS): $(BONUSS) Makefile
 	$(CC) $(CFLAGS) -I $(HEADBD) -o $(BONUS) $(BONUSS) 
@@ -29,14 +36,21 @@ $(BONUS): $(BONUSS) Makefile
 $(LIBFT):
 	@make --no-print-directory -C $(LIBFTHD)
 
+$(MLXL):
+	@git submodule init
+	@git submodule update
+	@make --no-print-directory -C $(MLXD)
+
 bonus: $(BONUS)
 
 clean:
 	@make --no-print-directory -C $(LIBFTHD) clean
+	@make --no-print-directory -C $(MLXD) clean
 
 fclean: clean
 	$(RM) $(NAME) $(BONUS)
 	@make --no-print-directory -C $(LIBFTHD) fclean
+	@make --no-print-directory -C $(MLXD) fclean
 
 re: fclean all
 
