@@ -63,5 +63,7 @@ norm:
 	norminette $(SRCS) $(HEADS) $(BONUSS) $(HEADB)
 	make --no-print-directory -C ft_printf norm
 
+testmlx: testmlx.c
+	$(CC) $(CFLAGS) -o $@ $< $(LIBFTCC) $(MLXCC)
 
 .PHONNY : norm bonus re fclean clean all ga gp
