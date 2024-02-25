@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/23 23:49:16 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:35:32 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,13 @@ typedef struct s_mlx
 	int		row;
 	int 	col;
 }			t_mlx;
+
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
 
 #endif
