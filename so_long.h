@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/25 16:35:16 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/25 23:16:21 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdlib.h>
+# include <fcntl.h>
 
 typedef struct s_mlx
 {
@@ -48,5 +49,8 @@ typedef struct s_map
 	int		iniy;
 }			t_map;
 
+int		sl_error(const char *info);
+int		sl_error_free(t_map *m, const char *info);
+int		sl_load_map(char *fn, t_map *m);
 
 #endif

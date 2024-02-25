@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/25 16:43:30 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/25 23:22:44 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2 || check_file_name(argv[1]))
 		return (usage(argv));
-	if (!sl_load_map(argv[1], &m))
+	if (sl_load_map(argv[1], &m))
 		return (1);
 	x.mlx = mlx_init();
 	x.win = mlx_new_window(x.mlx, 1920, 1080, "Hello world!");
