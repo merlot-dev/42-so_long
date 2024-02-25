@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/23 15:20:28 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:54:02 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,32 @@ int	check_file_name(char *fn)
 # define WINDOW_WIDTH 600
 # define WINDOW_HEIGHT 300
 
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 int	main(int argc, char **argv)
 {
-	void	*mlx_ptr;
-    void	*win_ptr;
+	void	*mlx;
+    void	*mlx_win;
+	t_img	img;
+	int		i;
 
 	if (argc != 2 || check_file_name(argv[1]))
 		return (usage(argv));
-	
-	mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
-	mlx_loop(mlx_ptr);
-    free(mlx_ptr);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	i = 5;
+	while (i++ < 1079)
+		my_mlx_pixel_put(&img, i, i, 0x00FF0000);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);	
+    free(mlx);
 }
