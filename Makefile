@@ -62,7 +62,7 @@ gp:
 
 norm:
 	norminette $(SRCS) $(HEADS) $(BONUSS) $(HEADB)
-	make --no-print-directory -C ft_printf norm
+	@make --no-print-directory -C $(LIBFTHD)  norm
 
 testmlx: testmlx.c
 	$(CC) $(CFLAGS) -o $@ $< $(LIBFTCC) $(MLXCC)

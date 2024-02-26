@@ -6,14 +6,14 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:49:06 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/22 16:49:36 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 01:01:00 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_free(void *p)
+void	*ft_free(void *p)
 {
-    free(p);
-    return (NULL);
+	free(p);
+	return (NULL);
 }

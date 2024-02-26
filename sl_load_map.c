@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 16:43:46 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/25 23:18:07 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 01:03:44 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,52 @@ int	get_rows(int fd, t_map *m)
 	m->cols--;
 	if ((m->cols < 3) || (m->rows < 3))
 		return (sl_error("Size to small\n"));
+	m->stx = 0;
+	m->sty = 0;
+	m->endx = 0;
+	m->endy = 0;
+	return (0);
+}
+
+int	check_elements(t_map *m, int y, int x)
+{
+	if (m->maps[y][x] == 'P' && m->stx)
+		return (sl_error_free(m, "More than one start\n"));
+	m->stx = y * (m->maps[y][x] == 'P');
+	m->sty = x * (m->maps[y][x] == 'P');
+	if (m->maps[y][x] == 'E' && m->endx)
+		return (sl_error_free(m, "More than one exit\n"));
+	m->endx = y * (m->maps[y][x] == 'E');
+	m->endy = x * (m->maps[y][x] == 'E');
+	m->coll += m->maps[y][x] == 'C';
+	return (0);
+}
+
+int	check_map(t_map *m)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	m->coll = 0;
+	while (i < m->rows)
+	{
+		if (m->maps[i][0] != 1 || m->maps[i][m->cols -1] != '1')
+			return (sl_error_free(m, "Bad wall\n"));
+		j = 1;
+		while (j < m->cols -1)
+		{
+			if ((i == 0 || i == m->rows - 1) && m->maps[i][j] != '1')
+				return (sl_error_free(m, "Bad wall\n"));
+			if (i > 0 && i < m->rows - 1)
+				if (check_elements(m, i, j))
+					return (1);
+			j++;
+		}
+		i++;
+	}
+	if (!m->coll || !m->stx || !m->endx)
+		return (sl_error_free(m, "Not enough elements in map\n"));
 	return (0);
 }
 
@@ -44,7 +90,7 @@ int	get_map_info(int fd, t_map *m)
 
 	m->maps = (char **)ft_calloc(m->rows, sizeof(char *));
 	if (! m->maps)
-		return(sl_error("Map malloc has failed\n"));
+		return (sl_error("Map malloc has failed\n"));
 	i = 0;
 	while (i < m->rows)
 	{
@@ -55,14 +101,15 @@ int	get_map_info(int fd, t_map *m)
 			return (sl_error_free(m, "Map line malloc failed\n"));
 		i++;
 	}
+	if (check_map(m))
+		return (1);
 	return (0);
 }
-
 
 int	sl_load_map(char *fn, t_map *m)
 {
 	int		fd;
-	int 	error;
+	int		error;
 
 	fd = open(fn, O_RDONLY);
 	if (fd < 0)

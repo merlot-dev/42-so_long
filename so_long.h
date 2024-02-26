@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/25 23:16:21 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:54:33 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_mlx
 	int		winx;
 	int		winy;
 	int		row;
-	int 	col;
+	int		col;
 }			t_mlx;
 
 typedef struct s_img
@@ -41,12 +41,14 @@ typedef struct s_img
 
 typedef struct s_map
 {
-	char	*fn;
 	int		cols;
 	int		rows;
 	char	**maps;
-	int		inix;
-	int		iniy;
+	int		stx;
+	int		sty;
+	int		endx;
+	int		endy;
+	int		coll;
 }			t_map;
 
 int		sl_error(const char *info);
