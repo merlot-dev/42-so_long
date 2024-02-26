@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 00:54:33 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:30:40 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ typedef struct s_map
 }			t_map;
 
 int		sl_error(const char *info);
+int		free_map(t_map *m);
 int		sl_error_free(t_map *m, const char *info);
 int		sl_load_map(char *fn, t_map *m);
+int		check_path(t_map *m);
 
 #endif

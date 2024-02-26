@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 16:43:46 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 01:03:44 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:29:23 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	check_elements(t_map *m, int y, int x)
 {
 	if (m->maps[y][x] == 'P' && m->stx)
 		return (sl_error_free(m, "More than one start\n"));
-	m->stx = y * (m->maps[y][x] == 'P');
-	m->sty = x * (m->maps[y][x] == 'P');
+	m->sty += y * (m->maps[y][x] == 'P');
+	m->stx += x * (m->maps[y][x] == 'P');
 	if (m->maps[y][x] == 'E' && m->endx)
 		return (sl_error_free(m, "More than one exit\n"));
-	m->endx = y * (m->maps[y][x] == 'E');
-	m->endy = x * (m->maps[y][x] == 'E');
+	m->endy += y * (m->maps[y][x] == 'E');
+	m->endx += x * (m->maps[y][x] == 'E');
 	m->coll += m->maps[y][x] == 'C';
 	return (0);
 }
@@ -64,7 +64,7 @@ int	check_map(t_map *m)
 	m->coll = 0;
 	while (i < m->rows)
 	{
-		if (m->maps[i][0] != 1 || m->maps[i][m->cols -1] != '1')
+		if (m->maps[i][0] != '1' || m->maps[i][m->cols -1] != '1')
 			return (sl_error_free(m, "Bad wall\n"));
 		j = 1;
 		while (j < m->cols -1)
@@ -103,6 +103,8 @@ int	get_map_info(int fd, t_map *m)
 	}
 	if (check_map(m))
 		return (1);
+	if (check_path(m))
+		return (sl_error_free(m, "No path in the map\n"));
 	return (0);
 }
 
