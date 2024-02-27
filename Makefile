@@ -53,7 +53,7 @@ fclean: clean
 re: fclean all
 
 ga:
-	git add Makefile $(SRCS) $(HEADS) $(BONUSS) $(HEADB)
+	git add Makefile $(SRCS) $(HEADS) $(BONUSS) $(HEADB) sprites/*.xpm *.ber
 	@make --no-print-directory -C $(LIBFTHD) ga
 
 gp:

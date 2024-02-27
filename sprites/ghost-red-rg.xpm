@@ -1,10 +1,10 @@
 /* XPM */
-static char *Red_Ghost_Left[] = {
+static char *Red_Ghost_Right[] = {
 /* columns rows colors chars-per-pixel */
 "80 40 4 1 ",
 "  c #AC3232",
 ". c #CBDBFC",
-"X c gray100",
+"X c #555555",
 "o c None",
 /* pixels */
 "ooooooooooooooo          oooooooooooooooooooooooooooooo          ooooooooooooooo",
@@ -17,14 +17,14 @@ static char *Red_Ghost_Left[] = {
 "oooo                                oooooooo                                oooo",
 "oooo                                oooooooo                                oooo",
 "ooo                                  oooooo                                  ooo",
-"oo     ..XX            ..XX           oooo     ..XX            ..XX           oo",
-"oo    ..XXXX          ..XXXX          oooo    ..XXXX          ..XXXX          oo",
-"o    ...XXXX.        ...XXXX.          oo    ...XXXX.        ...XXXX.          o",
-"o    ....XX..        ....XX..          oo    ....XX..        ....XX..          o",
-"o    ........        ........          oo    ........        ........          o",
-"     ........        ........                ........        ........           ",
-"      ......          ......                  ......          ......            ",
-"       ....            ....                    ....            ....             ",
+"oo           ..XX            ..XX     oooo           ..XX            ..XX     oo",
+"oo          ..XXXX          ..XXXX    oooo          ..XXXX          ..XXXX    oo",
+"o          ...XXXX.        ...XXXX.    oo          ...XXXX.        ...XXXX.    o",
+"o          ....XX..        ....XX..    oo          ....XX..        ....XX..    o",
+"o          ........        ........    oo          ........        ........    o",
+"           ........        ........                ........        ........     ",
+"            ......          ......                  ......          ......      ",
+"             ....            ....                    ....            ....       ",
 "                                                                                ",
 "                                                                                ",
 "                                                                                ",

@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 23:42:22 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:57:26 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_img
 {
 	void	*img;
 	char	*addr;
+	int		w;
+	int		h;
 	int		bpp;
 	int		ll;
 	int		endian;

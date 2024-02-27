@@ -1,0 +1,30 @@
+/* XPM */
+static char *Red_Ghost_Up[] = {
+/* columns rows colors chars-per-pixel */
+"40 20 4 2 ",
+"  c #AC3232",
+". c #CBDBFC",
+"X c #555555",
+"o c None",
+/* pixels */
+"ooooooooooooooo          oooooooooooooooooooooooooooooo          ooooooooooooooo",
+"oooooooooo                    oooooooooooooooooooo                    oooooooooo",
+"ooooooo                          oooooooooooooo                          ooooooo",
+"ooooo     ..XX            ..XX     oooooooooo     ..XX            ..XX     ooooo",
+"oooo    ...XXXX.        ...XXXX.    oooooooo    ...XXXX.        ...XXXX.    oooo",
+"oo      ........        ........      oooo      ........        ........      oo",
+"o        ......          ......        oo        ......          ......        o",
+"o                                      oo                                      o",
+"                                                                                ",
+"                                                                                ",
+"                                                                                ",
+"                                                                                ",
+"                                                                                ",
+"                                                                                ",
+"                                                                                ",
+"                                                                                ",
+"          ooo              ooo                            oooo                  ",
+"o       ooooooo          ooooooo       o       oo       oooooooo       oo       ",
+"o      ooooooooo        ooooooooo      o     oooo      oooooooooo      oooo     ",
+"oo    ooooooooooo      ooooooooooo    oo   oooooo    oooooooooooooo    oooooo   ",
+};
