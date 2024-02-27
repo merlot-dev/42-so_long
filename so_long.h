@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/27 14:57:26 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:19:20 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ typedef struct s_map
 	int		endy;
 	int		coll;
 }			t_map;
+
+typedef struct s_game
+{
+	t_mlx	x;	// all mlx related
+	t_img	gm;	// game image
+	t_img	sc; // score image
+	t_map	m;
+}			t_game;
 
 int		sl_error(const char *info);
 int		free_map(t_map *m);
