@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 00:57:58 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:43:46 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int hook_handler(int keycode, t_mlx *mx)
+{
+	ft_printf("Hook. keycode: %d      %d\n", keycode, mx->col);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	x;
@@ -48,13 +54,15 @@ int	main(int argc, char **argv)
 	if (sl_load_map(argv[1], &m))
 		return (1);
 	x.mlx = mlx_init();
-	x.win = mlx_new_window(x.mlx, 1920, 1080, "Hello world!");
-	im.img = mlx_new_image(x.mlx, 1920, 1080);
+	x.win = mlx_new_window(x.mlx, WINDOWX, WINDOWY, "Hello world!");
+	im.img = mlx_new_image(x.mlx, WINDOWX, WINDOWY);
 	im.addr = mlx_get_data_addr(im.img, &im.bpp, &im.ll, &im.endian);
-	i = 5;
-	while (i++ < 1079)
+	i = -1;
+	while (++i < WINDOWY)
 		my_mlx_pixel_put(&im, i, i, 0x00FF0000);
 	mlx_put_image_to_window(x.mlx, x.win, im.img, 0, 0);
+	mlx_hook(x.win, 2, 0, hook_handler, &x);
+	mlx_hook(x.win, 17, 0, hook_handler, &x);
 	mlx_loop(x.mlx);
 	free(x.mlx);
 }

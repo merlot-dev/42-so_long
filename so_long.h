@@ -6,12 +6,15 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 17:30:40 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:42:22 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# define WINDOWX 1920
+# define WINDOWY 1080
 
 # include "libft.h"
 # include "mlx.h"
@@ -21,8 +24,6 @@
 typedef struct s_mlx
 {
 	void	*mlx;
-	int		scrx;
-	int		scry;
 	void	*win;
 	int		winx;
 	int		winy;
