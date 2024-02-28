@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/28 22:59:15 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/28 23:31:07 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ int	draw_gameover(t_mlx x)
 
     im.img = mlx_xpm_file_to_image(x.mlx, GAMEOVER, &im.w, &im.h);
     mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 600);
+     im.img = mlx_xpm_file_to_image(x.mlx, "sprites/txt-numbers.xpm", &im.w, &im.h);
+     mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 500);
+     im.img = mlx_xpm_file_to_image(x.mlx, "sprites/wall20-lf.xpm", &im.w, &im.h);
+     mlx_put_image_to_window(x.mlx, x.win, im.img, 0, 0);
+     im.img = mlx_xpm_file_to_image(x.mlx, "sprites/wall20-rg.xpm", &im.w, &im.h);
+     mlx_put_image_to_window(x.mlx, x.win, im.img, 0, 0);
+     im.img = mlx_xpm_file_to_image(x.mlx, "sprites/wall20-up.xpm", &im.w, &im.h);
+     mlx_put_image_to_window(x.mlx, x.win, im.img, 0, 0);
+     im.img = mlx_xpm_file_to_image(x.mlx, "sprites/wall20-dw.xpm", &im.w, &im.h);
+     mlx_put_image_to_window(x.mlx, x.win, im.img, 0, 0);
 	return (0);
 }
 
