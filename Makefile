@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS =  so_long.c sl_load_map.c check_path.c \
+		draw_map.c \
 		sl_error.c
 HEADD = ./
 HEADS = so_long.h
@@ -28,7 +29,7 @@ OPENGL = -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(SRCS) Makefile $(LIBFT) $(MLXL)
+$(NAME): $(SRCS) Makefile $(LIBFT) $(MLXL) $(HEADS)
 	$(CC) $(CFLAGS) -I $(HEADD) -o $(NAME) $(SRCS) $(LIBFTCC) $(MLXCC)
 
 $(BONUS): $(BONUSS) Makefile

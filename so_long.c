@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/27 18:20:23 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:40:59 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,14 @@ int hook_handler(int keycode, t_mlx *mx)
 int	main(int argc, char **argv)
 {
 	t_game	g;
-	t_img	im;
-	int		i;
 
 	if (argc != 2 || check_file_name(argv[1]))
 		return (usage(argv));
 	if (sl_load_map(argv[1], &g.m))
 		return (1);
 	g.x.mlx = mlx_init();
-	g.x.win = mlx_new_window(g.x.mlx, WINDOWX, WINDOWY, "Hello world!");
-	im.img = mlx_new_image(g.x.mlx, WINDOWX, WINDOWY);
-	im.addr = mlx_get_data_addr(im.img, &im.bpp, &im.ll, &im.endian);
-	i = -1;
-	while (++i < WINDOWY)
-		my_mlx_pixel_put(&im, i, i, 0x00FF0000);
-	mlx_put_image_to_window(g.x.mlx, g.x.win, im.img, 0, 0);
-	mlx_destroy_image(g.x.mlx, im.img);
-	im.img = mlx_xpm_file_to_image(g.x.mlx, "sprites/pacman-dw.xpm", &im.w, &im.h);
-	mlx_put_image_to_window(g.x.mlx, g.x.win, im.img, 0, 0);
-	im.img = mlx_xpm_file_to_image(g.x.mlx, "sprites/pacman20-dw.xpm", &im.w, &im.h);
-	mlx_put_image_to_window(g.x.mlx, g.x.win, im.img, 0, 40);
-	im.img = mlx_xpm_file_to_image(g.x.mlx, "sprites/ghost20-red-dw.xpm", &im.w, &im.h);
-	mlx_put_image_to_window(g.x.mlx, g.x.win, im.img, 0, 60);
-	im.img = mlx_xpm_file_to_image(g.x.mlx, "sprites/ghost-red-dw.xpm", &im.w, &im.h);
-	mlx_put_image_to_window(g.x.mlx, g.x.win, im.img, 0, 80);
+	g.x.win = mlx_new_window(g.x.mlx, WINDOWX, WINDOWY, "PACMAN revenge");
+	draw_map(g.x);
 	mlx_hook(g.x.win, 2, 0, hook_handler, &g.x);
 	mlx_hook(g.x.win, 17, 0, exit_game, &g.x);
 	mlx_loop(g.x.mlx);
