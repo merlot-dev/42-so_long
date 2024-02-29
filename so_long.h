@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/28 22:48:01 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:42:55 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct s_map
 typedef struct s_game
 {
 	t_mlx	x;	// all mlx related
-	t_img	gm;	// game image
-	t_img	sc; // score image
+	t_img	*mi; // map image
+	t_img	*gi;	// game image
 	t_map	m;
 }			t_game;
 
