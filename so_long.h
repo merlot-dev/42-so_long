@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/29 17:43:17 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:07:47 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,18 @@
 # define COLLS "sprites/txt-colls.xpm"
 # define GAMEOVER "sprites/txt-gameover.xpm"
 
-# define CELLDIM 20
+# define CELLDIM 40
 
-# define LWALL "sprites/wall20-lf.xpm"
-# define RWALL "sprites/wall20-rg.xpm"
-# define UWALL "sprites/wall20-up.xpm"
-# define DWALL "sprites/wall20-dw.xpm"
+# define LWALL "sprites/wall-lf.xpm"
+# define RWALL "sprites/wall-rg.xpm"
+# define UWALL "sprites/wall-up.xpm"
+# define DWALL "sprites/wall-dw.xpm"
+
+# define PACMAN "sprites/pacman.xpm"
+# define BLINKY "sprites/ghost-red.xpm"
+# define INKY "sprites/ghost-blue.xpm"
+# define CLYDE "sprites/ghost-orange.xpm"
+# define PINKY "sprites/ghost-pink.xpm"
 
 typedef struct s_mlx
 {
@@ -73,6 +79,7 @@ typedef struct s_game
 	t_img	*mi; // map image
 	t_img	*gi;	// game image
 	t_map	m;
+	int		sc;
 	int		dim;
 }			t_game;
 
