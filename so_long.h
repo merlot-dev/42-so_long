@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/29 13:42:55 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:43:17 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 # define COLLS "sprites/txt-colls.xpm"
 # define GAMEOVER "sprites/txt-gameover.xpm"
 
+# define CELLDIM 20
+
+# define LWALL "sprites/wall20-lf.xpm"
+# define RWALL "sprites/wall20-rg.xpm"
+# define UWALL "sprites/wall20-up.xpm"
+# define DWALL "sprites/wall20-dw.xpm"
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -45,7 +52,7 @@ typedef struct s_img
 	int		h;
 	int		bpp;
 	int		ll;
-	int		endian;
+	int		end;
 }			t_img;
 
 typedef struct s_map
@@ -66,6 +73,7 @@ typedef struct s_game
 	t_img	*mi; // map image
 	t_img	*gi;	// game image
 	t_map	m;
+	int		dim;
 }			t_game;
 
 int		sl_error(const char *info);
@@ -73,6 +81,6 @@ int		free_map(t_map *m);
 int		sl_error_free(t_map *m, const char *info);
 int		sl_load_map(char *fn, t_map *m);
 int		check_path(t_map *m);
-int		draw_map(t_mlx x);
+int		draw_map(t_game *g);
 
 #endif
