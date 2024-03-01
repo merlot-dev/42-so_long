@@ -7,6 +7,7 @@ RM = rm -f
 
 SRCS =  so_long.c sl_load_map.c check_path.c \
 		draw_map.c \
+		img_tools.c \
 		sl_error.c
 HEADD = ./
 HEADS = so_long.h

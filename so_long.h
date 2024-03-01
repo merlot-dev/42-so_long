@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/01 00:07:47 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:47:51 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define COLLS "sprites/txt-colls.xpm"
 # define GAMEOVER "sprites/txt-gameover.xpm"
 
-# define CELLDIM 40
+# define CELLDIM 44
 
 # define LWALL "sprites/wall-lf.xpm"
 # define RWALL "sprites/wall-rg.xpm"
@@ -39,6 +39,7 @@
 # define INKY "sprites/ghost-blue.xpm"
 # define CLYDE "sprites/ghost-orange.xpm"
 # define PINKY "sprites/ghost-pink.xpm"
+# define PILL "sprites/pill.xpm"
 
 typedef struct s_mlx
 {
@@ -88,6 +89,8 @@ int		free_map(t_map *m);
 int		sl_error_free(t_map *m, const char *info);
 int		sl_load_map(char *fn, t_map *m);
 int		check_path(t_map *m);
+t_img   get_xpm_img(t_mlx mx, char *fn);
+t_img   cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
 int		draw_map(t_game *g);
 
 #endif
