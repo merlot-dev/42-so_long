@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/01 17:55:57 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:03:50 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,33 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	exit_game(int keycode, t_mlx *mx)
+int	exit_game(int keycode, t_game *g)
 {
 	keycode += 0;
 // free everything
-	mx->col += 0;
+	g->mv = 0;
 	exit(0);
 }
 
 // left: 123, right:124, up:126, down:125
 // a:0, s:1, w:13, z:6
-int hook_handler(int keycode, t_mlx *mx)
+int hook_handler(int keycode, t_game *g)
 {
+	int	xy[2];
+
 	if (keycode == 53)
 	{
-		mlx_destroy_window(mx->mlx, mx->win);
-		exit_game(keycode, mx);
+		mlx_destroy_window(g->x.mlx, g->x.win);
+		exit_game(keycode, g);
 	}
-	ft_printf("Hook. keycode: %d      %d\n", keycode, mx->col);
+	if (keycode == 126)
+	{
+		g->mv++;
+		xy[0] = SIDEX + 80;
+		xy[1] = 140;
+		draw_nbr(g->x, g->mv, xy, g->el);
+	}
+	ft_printf("Hook. keycode: %d      %d\n", keycode, g->x.col);
 	return (0);
 }
 
@@ -68,7 +77,7 @@ int	main(int argc, char **argv)
 	g.x.mlx = mlx_init();
 	g.x.win = mlx_new_window(g.x.mlx, WINDOWX, WINDOWY, "PACMAN revenge");
 	draw_map(&g);
-	mlx_hook(g.x.win, 2, 0, hook_handler, &g.x);
-	mlx_hook(g.x.win, 17, 0, exit_game, &g.x);
+	mlx_hook(g.x.win, 2, 0, hook_handler, &g);
+	mlx_hook(g.x.win, 17, 0, exit_game, &g);
 	mlx_loop(g.x.mlx);
 }

@@ -6,13 +6,13 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/03 01:00:43 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/03 21:54:37 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	load_elements(t_game *g, t_mapel *mel)
+int	load_wall_el(t_game *g, t_mapel *mel)
 {
 	mel->wl[0] = get_xpm_img(g->x, LWALL);
 	mel->wl[1] = get_xpm_img(g->x, RWALL);
@@ -27,6 +27,16 @@ int	load_elements(t_game *g, t_mapel *mel)
 	mel->cr[3] = get_xpm_img(g->x, CRNBL);
 	if (!mel->cr[0].addr || !mel->cr[1].addr || !mel->cr[2].addr
 		|| !mel->cr[3].addr)
+		return (1);
+	mel->nbr = get_xpm_img(g->x, NUMBERS);
+	if (!mel->nbr.addr)
+		return (1);
+	return (0);
+}
+
+int	load_elements(t_game *g, t_mapel *mel)
+{
+	if (load_wall_el(g,mel))
 		return (1);
 	mel->blinky = get_xpm_img(g->x, BLINKY);
 	mel->inky = get_xpm_img(g->x, INKY);

@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS =  so_long.c sl_load_map.c check_path.c \
-		draw_map.c draw_wall.c draw_coll.c \
+		draw_map.c draw_wall.c draw_coll.c draw_sidescr.c \
 		img_tools.c \
 		load_elements.c \
 		sl_error.c

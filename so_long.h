@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/03 00:01:38 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:13:46 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define MOVES "sprites/txt-moves.xpm"
 # define COLLS "sprites/txt-colls.xpm"
 # define GAMEOVER "sprites/txt-gameover.xpm"
+# define NUMBERS  "sprites/txt-numbers.xpm"
 
 # define CELLDIM 44
 
@@ -89,14 +90,16 @@ typedef struct s_mapel
 	t_img	pinky;
 	t_img	fruits;
 	t_img	pill;
+	t_img	nbr;
 }			t_mapel;
 
 typedef struct s_game
 {
 	t_mlx	x;	// all mlx related
-	t_img	*mi; // map image
-	t_img	*gi;	// game image
+	t_img	mi; // map image
+	t_img	gi;	// game image
 	t_map	m;
+	t_mapel	el;
 	int		mv;
 	int		dim;
 }			t_game;
@@ -109,6 +112,8 @@ int		check_path(t_map *m);
 t_img   get_xpm_img(t_mlx mx, char *fn);
 t_img   cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
 int		draw_map(t_game *g);
+int		draw_sidescr(t_mlx x, t_mapel el);
+int		draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
 int		load_elements(t_game *g, t_mapel *mel);

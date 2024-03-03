@@ -6,42 +6,11 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/02 23:30:01 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:23:05 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int draw_sidescr(t_mlx x)
-{
-	t_img   im;
-
-	im = get_xpm_img(x, TITLE);
-	if (!im.addr)
-		return (1);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX, 20);
-	im = get_xpm_img(x, MOVES);
-	if (!im.addr)
-		return (1);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 20, 100);
-	im = get_xpm_img(x, COLLS);
-	if (!im.addr)
-		return (1);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 20, 200);
-	return (0);
-}
-
-int	draw_gameover(t_mlx x)
-{
-    t_img   im;
-
-	im = get_xpm_img(x, GAMEOVER);
-    mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 600);
-	mlx_string_put(x.mlx, x.win, SIDEX + 10, 700, 0xFFFFFF, "<ESC> to exit");
-     im.img = mlx_xpm_file_to_image(x.mlx, "sprites/txt-numbers.xpm", &im.w, &im.h);
-     mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 500);
-	return (0);
-}
 
 int draw_pacman(t_game *g, int row, int col)
 {
@@ -99,18 +68,17 @@ int	draw_map(t_game *g)
 	int		i;
 	int		j;
 	int 	error;
-	t_mapel	mel;
 
-	if (draw_sidescr(g->x))
+	if (load_elements(g, &g->el))
 		return (1);
-	if (load_elements(g, &mel))
+	if (draw_sidescr(g->x, g->el))
 		return (1);
 	g->dim = CELLDIM;
 	g->mv = 0;
-	g->mi->w = g->m.cols * g->dim;
-	g->mi->h = g->m.rows * g->dim;
-	g->mi = mlx_new_image(g->x.mlx, g->mi->w, g->mi->h);
-	g->mi->addr = mlx_get_data_addr(g->mi, &g->mi->bpp, &g->mi->ll, &g->mi->end);
+	g->mi.w = g->m.cols * g->dim;
+	g->mi.h = g->m.rows * g->dim;
+	g->mi.img = mlx_new_image(g->x.mlx, g->mi.w, g->mi.h);
+	g->mi.addr = mlx_get_data_addr(g->mi.img, &g->mi.bpp, &g->mi.ll, &g->mi.end);
 	i = 0;
 	while (i < g->m.rows)
 	{
@@ -118,9 +86,9 @@ int	draw_map(t_game *g)
 		while (j < g->m.cols)
 		{
 			if (g->m.maps[i][j] == '1')
-				error = draw_wall(g, i, j, mel);
+				error = draw_wall(g, i, j, g->el);
 			if (g->m.maps[i][j] == 'C')
-				error = draw_coll(g, i, j, mel);
+				error = draw_coll(g, i, j, g->el);
 			if (g->m.maps[i][j] == 'P')
 				error = draw_pacman(g, i, j);
 			if (g->m.maps[i][j] == 'E')
@@ -133,5 +101,6 @@ int	draw_map(t_game *g)
 		}
 		i++;
 	}
+	g->mv = 0;
 	return (0);
 }
