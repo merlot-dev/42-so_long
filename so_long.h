@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/01 17:47:51 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/03 00:01:38 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 # define RWALL "sprites/wall-rg.xpm"
 # define UWALL "sprites/wall-up.xpm"
 # define DWALL "sprites/wall-dw.xpm"
+# define CRNTL "sprites/corner-tl.xpm"
+# define CRNTR "sprites/corner-tr.xpm"
+# define CRNBR "sprites/corner-br.xpm"
+# define CRNBL "sprites/corner-bl.xpm"
 
 # define PACMAN "sprites/pacman.xpm"
 # define BLINKY "sprites/ghost-red.xpm"
@@ -40,6 +44,7 @@
 # define CLYDE "sprites/ghost-orange.xpm"
 # define PINKY "sprites/ghost-pink.xpm"
 # define PILL "sprites/pill.xpm"
+# define FRUITS "sprites/pm-fruits.xpm"
 
 typedef struct s_mlx
 {
@@ -74,13 +79,25 @@ typedef struct s_map
 	int		coll;
 }			t_map;
 
+typedef struct s_mapel
+{
+	t_img	wl[4];
+	t_img	cr[4];
+	t_img	blinky;
+	t_img	inky;
+	t_img	clyde;
+	t_img	pinky;
+	t_img	fruits;
+	t_img	pill;
+}			t_mapel;
+
 typedef struct s_game
 {
 	t_mlx	x;	// all mlx related
 	t_img	*mi; // map image
 	t_img	*gi;	// game image
 	t_map	m;
-	int		sc;
+	int		mv;
 	int		dim;
 }			t_game;
 
@@ -92,5 +109,8 @@ int		check_path(t_map *m);
 t_img   get_xpm_img(t_mlx mx, char *fn);
 t_img   cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
 int		draw_map(t_game *g);
+int		draw_wall(t_game *g, int row, int col, t_mapel el);
+int		draw_coll(t_game *g, int row, int col, t_mapel el);
+int		load_elements(t_game *g, t_mapel *mel);
 
 #endif
