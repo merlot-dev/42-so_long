@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 16:22:39 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:05:15 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ int		sl_load_map(char *fn, t_map *m);
 int		check_path(t_map *m);
 t_img   get_xpm_img(t_mlx mx, char *fn);
 t_img   cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
+void	black_img(t_img im);
+t_img	get_sprite_n(t_game *g, t_img sp, int n);
 int		draw_map(t_game *g);
 int		draw_sidescr(t_mlx x, t_mapel el);
 int		draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el);

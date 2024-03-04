@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:55:21 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/01 15:20:54 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:40:53 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,31 @@ t_img	cut_img(t_mlx mx, t_img im, int st[2], int sz[2])
 	return (cuti);
 }
 
+void black_img(t_img im)
+{
+	int	i;
+	int	*p;
+
+	i = 0;
+	p = (int *)im.addr;
+	while (i++ < im.w * im.h)
+	{
+		if (*p != (int) 0xff000000)
+			*p = 0;
+		p++;
+	}
+}
+
+t_img	get_sprite_n(t_game *g, t_img sp, int n)
+{
+	t_img	rim;
+	int		xy[2];
+	int		sxy[2];
+
+	sxy[0] = sp.h;
+	sxy[1] = sp.h;
+	xy[0] = n * sp.h;
+	xy[1] = 0;
+	rim = cut_img(g->x, sp, xy, sxy);
+	return (rim);
+}
