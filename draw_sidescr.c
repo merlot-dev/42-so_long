@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:04:18 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/03 23:39:52 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:45:07 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ int draw_sidescr(t_mlx x, t_mapel el)
 	xy[1] = 140;
 	if (draw_nbr(x, 0, xy, el))
 		return (1);
-	im = get_xpm_img(x, COLLS);
+	im = get_xpm_img(x, "sprites/txt-keys.xpm");
 	if (!im.addr)
 		return (1);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 20, 200);
+	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 90, 650);
+	im = get_xpm_img(x, "sprites/txt-esc2exit.xpm");
+	if (!im.addr)
+		return (1);
+	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 10, 750);
 	return (0);
 }
 
@@ -41,10 +45,8 @@ int	draw_gameover(t_mlx x)
 	t_img   im;
 
 	im = get_xpm_img(x, GAMEOVER);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 600);
-	mlx_string_put(x.mlx, x.win, SIDEX + 10, 700, 0xFFFFFF, "<ESC> to exit");
-	 im.img = mlx_xpm_file_to_image(x.mlx, "sprites/txt-numbers.xpm", &im.w, &im.h);
-	 mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 500);
+	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 50, 500);
+	mlx_destroy_image(x.mlx, im.img);
 	return (0);
 }
 
@@ -66,6 +68,7 @@ int	draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el)
 		if (!di.addr)
 			return (1);
 	 	mlx_put_image_to_window(x.mlx, x.win, di.img, xy[0] + dig * sxy[0], xy[1]);
+		mlx_destroy_image(x.mlx, di.img);
 		nbr /= 10;
 		dig--;
 	}

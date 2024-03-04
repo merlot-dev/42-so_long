@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 00:23:05 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:48:08 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int draw_pacman(t_game *g, int row, int col)
 	if (!pm.addr)
 		return (1);
    	mlx_put_image_to_window(g->x.mlx, g->x.win, pm.img, px, py);
+   	mlx_destroy_image(g->x.mlx, pm.img);
+	g->px = col;
+	g->py = row;
 	return (0);
 }
 
@@ -39,6 +42,7 @@ int draw_pill(t_game *g, int row, int col)
 	if (!pm.addr)
 		return (1);
    	mlx_put_image_to_window(g->x.mlx, g->x.win, pm.img, px, py);
+   	mlx_destroy_image(g->x.mlx, pm.img);
 	return (0);
 }
 
@@ -60,6 +64,8 @@ int draw_exit(t_game *g, int row, int col)
 	xy[0] = col * g->dim + 4;
 	xy[1] = row * g->dim + 10;
    	mlx_put_image_to_window(g->x.mlx, g->x.win, cpm.img, xy[0], xy[1]);
+   	mlx_destroy_image(g->x.mlx, pm.img);
+   	mlx_destroy_image(g->x.mlx, cpm.img);
 	return (0);
 }
 
@@ -75,6 +81,7 @@ int	draw_map(t_game *g)
 		return (1);
 	g->dim = CELLDIM;
 	g->mv = 0;
+	g->gover = 0;
 	g->mi.w = g->m.cols * g->dim;
 	g->mi.h = g->m.rows * g->dim;
 	g->mi.img = mlx_new_image(g->x.mlx, g->mi.w, g->mi.h);

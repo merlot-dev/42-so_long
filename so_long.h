@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 00:13:46 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:48:51 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,11 @@ typedef struct s_game
 	t_img	gi;	// game image
 	t_map	m;
 	t_mapel	el;
-	int		mv;
 	int		dim;
+	int		px;
+	int		py;
+	int		mv;
+	int		gover;
 }			t_game;
 
 int		sl_error(const char *info);
@@ -116,6 +119,9 @@ int		draw_sidescr(t_mlx x, t_mapel el);
 int		draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
+int		draw_pacman(t_game *g, int row, int col);
+int		draw_gameover(t_mlx x);
 int		load_elements(t_game *g, t_mapel *mel);
+int		key_moves(int keycode, t_game *g);
 
 #endif

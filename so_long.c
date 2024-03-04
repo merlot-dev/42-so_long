@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 00:03:50 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:06:38 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,15 @@ int	exit_game(int keycode, t_game *g)
 // a:0, s:1, w:13, z:6
 int hook_handler(int keycode, t_game *g)
 {
-	int	xy[2];
-
 	if (keycode == 53)
 	{
 		mlx_destroy_window(g->x.mlx, g->x.win);
 		exit_game(keycode, g);
 	}
-	if (keycode == 126)
+	if (key_moves(keycode, g))
 	{
-		g->mv++;
-		xy[0] = SIDEX + 80;
-		xy[1] = 140;
-		draw_nbr(g->x, g->mv, xy, g->el);
+		mlx_destroy_window(g->x.mlx, g->x.win);
+		exit_game(keycode, g);
 	}
 	ft_printf("Hook. keycode: %d      %d\n", keycode, g->x.col);
 	return (0);
