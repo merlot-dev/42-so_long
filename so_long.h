@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 14:48:51 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:22:39 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdlib.h>
+# include <unistd.h>
 # include <fcntl.h>
 
 # define WINDOWX 1280
 # define WINDOWY 800
 # define SIDEX 999
 
+# define CELLDIM 44
+
 # define TITLE "sprites/pacman-revenge.xpm"
 # define MOVES "sprites/txt-moves.xpm"
 # define COLLS "sprites/txt-colls.xpm"
 # define GAMEOVER "sprites/txt-gameover.xpm"
 # define NUMBERS  "sprites/txt-numbers.xpm"
-
-# define CELLDIM 44
+# define ESC2EX  "sprites/txt-esc2exit.xpm"
+# define KEYS  "sprites/txt-keys.xpm"
 
 # define LWALL "sprites/wall-lf.xpm"
 # define RWALL "sprites/wall-rg.xpm"
@@ -46,6 +49,11 @@
 # define PINKY "sprites/ghost-pink.xpm"
 # define PILL "sprites/pill.xpm"
 # define FRUITS "sprites/pm-fruits.xpm"
+# define PMUP "sprites/pacman-up.xpm"
+# define PMDW "sprites/pacman-dw.xpm"
+# define PMLF "sprites/pacman-lf.xpm"
+# define PMRG "sprites/pacman-rg.xpm"
+# define BLACK "sprites/black.xpm"
 
 typedef struct s_mlx
 {
@@ -90,6 +98,11 @@ typedef struct s_mapel
 	t_img	pinky;
 	t_img	fruits;
 	t_img	pill;
+	t_img	pmup;
+	t_img	pmdw;
+	t_img	pmlf;
+	t_img	pmrg;
+	t_img	black;
 	t_img	nbr;
 }			t_mapel;
 
@@ -119,6 +132,7 @@ int		draw_sidescr(t_mlx x, t_mapel el);
 int		draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
+int		draw_black(t_game *g, int row, int col, t_mapel el);
 int		draw_pacman(t_game *g, int row, int col);
 int		draw_gameover(t_mlx x);
 int		load_elements(t_game *g, t_mapel *mel);

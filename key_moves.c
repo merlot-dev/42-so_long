@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:54:44 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 14:49:59 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:53:18 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,35 @@
 
 int	move_up(t_game *g)
 {
-	int	i;
+	int		i;
+	int		xy[2];
+	int		sxy[2];
+	t_img	cpm;
 
 	if (g->m.maps[g->py - 1][g->px] == '1')
 		return (0);
 	else
 	{
     	g->mv++;
-		i = 0;
-		draw_pacman(g, g->py - 1, g->px);
+		sxy[0] = 40;
+		sxy[1] = 40;
+		i = 3;
+		while (i >= 0)
+		{
+			draw_black(g, g->py, g->px, g->el);
+			xy[0] = i * 40;
+			xy[1] = 0;
+			cpm = cut_img(g->x, g->el.pmup, xy, sxy);
+			xy[0] = g->px * g->dim + 2;
+			xy[1] = (g->py - 1) * g->dim + 2 + i * 10;
+			mlx_put_image_to_window(g->x.mlx, g->x.win, g->el.black.img, xy[0], xy[1]);
+			mlx_put_image_to_window(g->x.mlx, g->x.win, cpm.img, xy[0], xy[1]);
+			mlx_destroy_image(g->x.mlx, cpm.img);
+			mlx_do_sync(g->x.mlx);
+			i--;
+			usleep(500000);
+		}
+		g->py--;
 	}
 	return (0);
 }

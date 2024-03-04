@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/03 21:54:37 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:55:13 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ int	load_elements(t_game *g, t_mapel *mel)
 	mel->pill = get_xpm_img(g->x, PILL);
 	if (!mel->blinky.addr || !mel->inky.addr || !mel->clyde.addr
 		|| !mel->pinky.addr || !mel->fruits.addr || !mel->pill.addr)
+		return (1);
+	mel->pmup = get_xpm_img(g->x, PMUP);
+	mel->pmdw = get_xpm_img(g->x, PMDW);
+	mel->pmlf = get_xpm_img(g->x, PMLF);
+	mel->pmrg = get_xpm_img(g->x, PMRG);
+	mel->black = get_xpm_img(g->x, BLACK);
+	if (!mel->pmup.addr || !mel->pmdw.addr || !mel->pmlf.addr
+		|| !mel->pmrg.addr || !mel->black.addr)
 		return (1);
 	return (0);
 }
