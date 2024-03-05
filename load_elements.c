@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 15:55:13 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/05 23:57:09 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	load_elements(t_game *g, t_mapel *mel)
 	mel->black = get_xpm_img(g->x, BLACK);
 	if (!mel->pmup.addr || !mel->pmdw.addr || !mel->pmlf.addr
 		|| !mel->pmrg.addr || !mel->black.addr)
+		return (1);
+	mel->ghblink = get_xpm_img(g->x, GHBLINK);
+	if (!mel->ghblink.addr)
 		return (1);
 	return (0);
 }

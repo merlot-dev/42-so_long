@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:04:18 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 14:45:07 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:27:41 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,13 @@ int	draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el)
 		dig--;
 	}
 	return (0);
+}
+
+int	draw_moves(t_game g, int mvs)
+{
+	int	xy[2];
+
+	xy[0] = SIDEX + 80;
+	xy[1] = 140;
+	return (draw_nbr(g.x, mvs, xy, g.el));
 }
