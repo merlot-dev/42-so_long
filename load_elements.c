@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/05 23:57:09 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/06 23:04:08 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,23 @@ int	load_wall_el(t_game *g, t_mapel *mel)
 	return (0);
 }
 
+int	destroy_wall(t_game *g)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (g->el.wl[i].addr)
+			mlx_destroy_image(g->x.mlx, g->el.wl[i].img);
+		if (g->el.cr[i].addr)
+			mlx_destroy_image(g->x.mlx, g->el.cr[i].img);
+		g->el.wl[i].addr = NULL;
+		g->el.cr[i++].addr = NULL;
+	}
+	return (0);
+}
+
 int	load_elements(t_game *g, t_mapel *mel)
 {
 	if (load_wall_el(g,mel))
@@ -51,9 +68,9 @@ int	load_elements(t_game *g, t_mapel *mel)
 	mel->pmdw = get_xpm_img(g->x, PMDW);
 	mel->pmlf = get_xpm_img(g->x, PMLF);
 	mel->pmrg = get_xpm_img(g->x, PMRG);
-	mel->black = get_xpm_img(g->x, BLACK);
+	mel->pacman = get_xpm_img(g->x, PACMAN);
 	if (!mel->pmup.addr || !mel->pmdw.addr || !mel->pmlf.addr
-		|| !mel->pmrg.addr || !mel->black.addr)
+		|| !mel->pmrg.addr || !mel->pacman.addr)
 		return (1);
 	mel->ghblink = get_xpm_img(g->x, GHBLINK);
 	if (!mel->ghblink.addr)

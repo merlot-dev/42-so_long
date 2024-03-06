@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/05 23:54:35 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 00:25:36 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WINDOWX 1280
 # define WINDOWY 800
-# define SIDEX 999
+# define SIDEX 1000
 
 # define CELLDIM 44
 
@@ -104,7 +104,7 @@ typedef struct s_mapel
 	t_img	pmdw;
 	t_img	pmlf;
 	t_img	pmrg;
-	t_img	black;
+	t_img	pacman;
 	t_img	nbr;
 }			t_mapel;
 
@@ -137,11 +137,11 @@ int		draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el);
 int		draw_moves(t_game g, int mvs);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
-int		draw_black(t_game *g, int row, int col, t_mapel el);
 int		draw_pacman(t_game *g, int row, int col);
 int		draw_gameover(t_mlx x);
 int		load_elements(t_game *g, t_mapel *mel);
 int		key_moves(int keycode, t_game *g);
 void	x_img_to_win(t_game g, t_img im, int xy[2], int destroy);
+void	x_destroy_img(t_game g, t_img im);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/04 14:06:38 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 00:06:31 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,16 @@ int	check_file_name(char *fn)
 	return ((int)ft_free(ext));
 }
 
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->ll + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
 int	exit_game(int keycode, t_game *g)
 {
 	keycode += 0;
-// free everything
 	g->mv = 0;
 	exit(0);
 }
 
 // left: 123, right:124, up:126, down:125
 // a:0, s:1, w:13, z:6
-int hook_handler(int keycode, t_game *g)
+int	hook_handler(int keycode, t_game *g)
 {
 	if (keycode == 53)
 	{
@@ -58,7 +49,6 @@ int hook_handler(int keycode, t_game *g)
 		mlx_destroy_window(g->x.mlx, g->x.win);
 		exit_game(keycode, g);
 	}
-	ft_printf("Hook. keycode: %d      %d\n", keycode, g->x.col);
 	return (0);
 }
 
@@ -66,10 +56,13 @@ int	main(int argc, char **argv)
 {
 	t_game	g;
 
+	ft_bzero(&g, sizeof(t_game));
 	if (argc != 2 || check_file_name(argv[1]))
 		return (usage(argv));
 	if (sl_load_map(argv[1], &g.m))
 		return (1);
+	if (g.m.cols > 22 || g.m.rows > 18)
+		return (sl_error_free(&g.m, "Map is OK but big to be playable\n"));
 	g.x.mlx = mlx_init();
 	g.x.win = mlx_new_window(g.x.mlx, WINDOWX, WINDOWY, "PACMAN revenge");
 	draw_map(&g);

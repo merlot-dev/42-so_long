@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/06 15:35:17 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/06 23:40:05 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 int	draw_pacman(t_game *g, int row, int col)
 {
-	t_img	pm;
 	int		px;
 	int		py;
 
 	px = col * g->dim + 2;
 	py = row * g->dim + 2;
-	pm = get_xpm_img(g->x, PACMAN);
-	if (!pm.addr)
-		return (1);
-	mlx_put_image_to_window(g->x.mlx, g->x.win, pm.img, px, py);
-	mlx_destroy_image(g->x.mlx, pm.img);
+	mlx_put_image_to_window(g->x.mlx, g->x.win, g->el.pacman.img, px, py);
 	g->px = col;
 	g->py = row;
 	return (0);
@@ -32,23 +27,17 @@ int	draw_pacman(t_game *g, int row, int col)
 
 int	draw_pill(t_game *g, int row, int col)
 {
-	t_img	pm;
 	int		px;
 	int		py;
 
 	px = col * g->dim + 2;
 	py = row * g->dim + 2;
-	pm = get_xpm_img(g->x, PILL);
-	if (!pm.addr)
-		return (1);
-	mlx_put_image_to_window(g->x.mlx, g->x.win, pm.img, px, py);
-	mlx_destroy_image(g->x.mlx, pm.img);
+	mlx_put_image_to_window(g->x.mlx, g->x.win, g->el.pill.img, px, py);
 	return (0);
 }
 
 int	draw_exit(t_game *g, int row, int col)
 {
-	t_img	pm;
 	t_img	cpm;
 	int		xy[2];
 	int		sxy[2];
@@ -57,14 +46,10 @@ int	draw_exit(t_game *g, int row, int col)
 	xy[1] = 0;
 	sxy[0] = 36;
 	sxy[1] = 23;
-	pm = get_xpm_img(g->x, "sprites/pm-fruits.xpm");
-	if (!pm.addr)
-		return (1);
-	cpm = cut_img(g->x, pm, xy, sxy);
+	cpm = cut_img(g->x, g->el.fruits, xy, sxy);
 	xy[0] = col * g->dim + 4;
 	xy[1] = row * g->dim + 10;
 	mlx_put_image_to_window(g->x.mlx, g->x.win, cpm.img, xy[0], xy[1]);
-	mlx_destroy_image(g->x.mlx, pm.img);
 	mlx_destroy_image(g->x.mlx, cpm.img);
 	return (0);
 }
@@ -99,8 +84,6 @@ int	draw_map(t_game *g)
 	if (draw_sidescr(g->x, g->el))
 		return (1);
 	g->dim = CELLDIM;
-	g->mv = 0;
-	g->gover = 0;
 	i = 0;
 	while (i < g->m.rows)
 	{
