@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:54:44 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/05 23:21:14 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:20:41 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,13 @@ int	move_rg(t_game *g)
 // a:0, s:1, w:13, z:6
 int	key_moves(int keycode, t_game *g)
 {
-	if (keycode == 13 && !g->gover)
+	if (keycode == 126 && !g->gover)
 		move_up(g);
-	if (keycode == 6 && !g->gover)
+	if (keycode == 125 && !g->gover)
 		move_dw(g);
-	if (keycode == 0 && !g->gover)
+	if (keycode == 123 && !g->gover)
 		move_lf(g);
-	if (keycode == 1 && !g->gover)
+	if (keycode == 124 && !g->gover)
 		move_rg(g);
 	if (g->px == g->m.endx && g->py == g->m.endy)
 	{

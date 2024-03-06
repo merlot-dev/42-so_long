@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:30:14 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/25 23:23:35 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:27:45 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	free_map(t_map *m)
 int	sl_error_free(t_map *m, const char *info)
 {
 	free_map(m);
-	ft_printf("Error\n%s", info);
+	ft_printf("Error:\n%s", info);
 	return (1);
 }

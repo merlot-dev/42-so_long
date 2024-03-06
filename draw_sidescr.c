@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:04:18 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/05 22:27:41 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:42:09 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,21 @@ int draw_sidescr(t_mlx x, t_mapel el)
 	if (!im.addr)
 		return (1);
 	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX, 20);
+	mlx_destroy_image(x.mlx, im.img);
 	im = get_xpm_img(x, MOVES);
 	if (!im.addr)
 		return (1);
 	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 20, 100);
+	mlx_destroy_image(x.mlx, im.img);
 	xy[0] = SIDEX + 80;
 	xy[1] = 140;
 	if (draw_nbr(x, 0, xy, el))
 		return (1);
-	im = get_xpm_img(x, "sprites/txt-keys.xpm");
+	im = get_xpm_img(x, "sprites/txt-instruction.xpm");
 	if (!im.addr)
 		return (1);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 90, 650);
-	im = get_xpm_img(x, "sprites/txt-esc2exit.xpm");
-	if (!im.addr)
-		return (1);
-	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 10, 750);
+	mlx_put_image_to_window(x.mlx, x.win, im.img, SIDEX + 10, 700);
+	mlx_destroy_image(x.mlx, im.img);
 	return (0);
 }
 

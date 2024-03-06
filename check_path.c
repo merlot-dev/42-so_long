@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:48:53 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 17:35:30 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:16:06 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_path(t_map *m)
 
 	mvs = (char **)ft_calloc(m->rows, sizeof(char *));
 	if (!mvs)
-		return(1);
+		return (1);
 	i = 0;
 	while (i < m->rows)
 	{
@@ -66,4 +66,3 @@ int	check_path(t_map *m)
 	free_mvs(m, mvs);
 	return (i);
 }
-
