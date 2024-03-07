@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/06 23:04:08 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 01:14:09 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	destroy_wall(t_game *g)
 
 int	load_elements(t_game *g, t_mapel *mel)
 {
-	if (load_wall_el(g,mel))
+	if (load_wall_el(g, mel))
 		return (1);
 	mel->blinky = get_xpm_img(g->x, BLINKY);
 	mel->inky = get_xpm_img(g->x, INKY);

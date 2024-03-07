@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/06 23:40:05 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 00:52:17 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	draw_map(t_game *g)
 
 	if (load_elements(g, &g->el))
 		return (1);
-	if (draw_sidescr(g->x, g->el))
+	if (draw_sidescr(*g, g->el))
 		return (1);
 	g->dim = CELLDIM;
 	i = 0;

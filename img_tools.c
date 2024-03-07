@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:55:21 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/05 00:40:53 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 01:11:54 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_img	cut_img(t_mlx mx, t_img im, int st[2], int sz[2])
 	return (cuti);
 }
 
-void black_img(t_img im)
+void	black_img(t_img im)
 {
 	int	i;
 	int	*p;

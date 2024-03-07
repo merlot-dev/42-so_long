@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 00:25:36 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 01:14:49 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,13 @@ int		free_map(t_map *m);
 int		sl_error_free(t_map *m, const char *info);
 int		sl_load_map(char *fn, t_map *m);
 int		check_path(t_map *m);
-t_img   get_xpm_img(t_mlx mx, char *fn);
-t_img   cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
+t_img	get_xpm_img(t_mlx mx, char *fn);
+t_img	cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
 void	black_img(t_img im);
 t_img	get_sprite_n(t_game *g, t_img sp, int n);
 int		draw_map(t_game *g);
-int		draw_sidescr(t_mlx x, t_mapel el);
-int		draw_nbr(t_mlx x, int nbr, int xy[2], t_mapel el);
+int		draw_sidescr(t_game g, t_mapel el);
+int		draw_nbr(t_game g, int nbr, int xy[2], t_mapel el);
 int		draw_moves(t_game g, int mvs);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
@@ -141,7 +141,7 @@ int		draw_pacman(t_game *g, int row, int col);
 int		draw_gameover(t_mlx x);
 int		load_elements(t_game *g, t_mapel *mel);
 int		key_moves(int keycode, t_game *g);
-void	x_img_to_win(t_game g, t_img im, int xy[2], int destroy);
+int		x_img_to_win(t_game g, t_img im, int xy[2], int destroy);
 void	x_destroy_img(t_game g, t_img im);
 
 #endif
