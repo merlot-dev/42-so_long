@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:54:44 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 01:10:08 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:53:28 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int	key_moves(int keycode, t_game *g)
 	if (g->px == g->m.endx && g->py == g->m.endy)
 	{
 		g->gover = 1;
-		draw_gameover(g->x);
+		draw_gameover(g);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 00:06:31 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:12:15 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ int	hook_handler(int keycode, t_game *g)
 	return (0);
 }
 
+int	init_map(t_game *g)
+{
+	if (g->m.cols > 22 || g->m.rows > 18)
+		return (sl_error_free(&g->m, "Map is OK but big to be playable\n"));
+	g->dim = CELLDIM;
+	g->x.winx = g->dim * g->m.cols + 280;
+	g->x.winy = g->dim * g->m.rows;
+	if (g->x.winy < 300)
+		g->x.winy = 300;
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	g;
@@ -61,10 +73,10 @@ int	main(int argc, char **argv)
 		return (usage(argv));
 	if (sl_load_map(argv[1], &g.m))
 		return (1);
-	if (g.m.cols > 22 || g.m.rows > 18)
-		return (sl_error_free(&g.m, "Map is OK but big to be playable\n"));
+	if (init_map(&g))
+		return (1);
 	g.x.mlx = mlx_init();
-	g.x.win = mlx_new_window(g.x.mlx, WINDOWX, WINDOWY, "PACMAN revenge");
+	g.x.win = mlx_new_window(g.x.mlx, g.x.winx, g.x.winy, "PACMAN revenge");
 	draw_map(&g);
 	mlx_hook(g.x.win, 2, 0, hook_handler, &g);
 	mlx_hook(g.x.win, 17, 0, exit_game, &g);
