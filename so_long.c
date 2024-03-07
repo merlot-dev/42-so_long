@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 16:16:32 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:33:41 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ int	main(int argc, char **argv)
 		return (1);
 	g.x.mlx = mlx_init();
 	g.x.win = mlx_new_window(g.x.mlx, g.x.winx, g.x.winy, "PACMAN revenge");
-	draw_map(&g);
+	if (draw_map(&g))
+	{
+		destroy_elements(&g);
+		return (sl_error_free(&g.m, "Check xpm image files\n"));
+	}
 	mlx_hook(g.x.win, 2, 0, hook_handler, &g);
 	mlx_hook(g.x.win, 17, 0, exit_game, &g);
 	mlx_loop(g.x.mlx);
