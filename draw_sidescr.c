@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:04:18 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 15:41:11 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 18:35:27 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ int	draw_moves(t_game g, int mvs)
 
 	xy[0] = g.x.winx - SIDEX + 80;
 	xy[1] = 110;
+	ft_printf("MOVES: %6d\n", mvs);
 	return (draw_nbr(g, mvs, xy, g.el));
 }
