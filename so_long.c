@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 14:12:15 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:16:32 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	hook_handler(int keycode, t_game *g)
 {
 	if (keycode == 53)
 	{
+		destroy_elements(g);
 		mlx_destroy_window(g->x.mlx, g->x.win);
 		exit_game(keycode, g);
 	}

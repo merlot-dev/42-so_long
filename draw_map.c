@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 13:37:53 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:19:52 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ int	draw_exit(t_game *g, int row, int col)
 	sxy[0] = 36;
 	sxy[1] = 23;
 	cpm = cut_img(g->x, g->el.fruits, xy, sxy);
+	if (!cpm.addr)
+		return (1);
 	xy[0] = col * g->dim + 4;
 	xy[1] = row * g->dim + 10;
-	mlx_put_image_to_window(g->x.mlx, g->x.win, cpm.img, xy[0], xy[1]);
-	mlx_destroy_image(g->x.mlx, cpm.img);
+	x_img_to_win(*g, &cpm, xy, 1);
 	return (0);
 }
 
@@ -80,9 +81,9 @@ int	draw_map(t_game *g)
 	int	j;
 
 	if (load_elements(g, &g->el))
-		return (1);
+		return (destroy_elements(g));
 	if (draw_sidescr(*g, g->el))
-		return (1);
+		return (destroy_elements(g));
 	i = 0;
 	while (i < g->m.rows)
 	{
@@ -90,7 +91,7 @@ int	draw_map(t_game *g)
 		while (j < g->m.cols)
 		{
 			if (draw_el(g, i, j++))
-				return (1);
+				return (destroy_elements(g));
 		}
 		i++;
 	}

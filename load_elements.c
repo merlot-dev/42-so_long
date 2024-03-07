@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 01:14:09 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:22:28 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,6 @@ int	load_wall_el(t_game *g, t_mapel *mel)
 	mel->nbr = get_xpm_img(g->x, NUMBERS);
 	if (!mel->nbr.addr)
 		return (1);
-	return (0);
-}
-
-int	destroy_wall(t_game *g)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (g->el.wl[i].addr)
-			mlx_destroy_image(g->x.mlx, g->el.wl[i].img);
-		if (g->el.cr[i].addr)
-			mlx_destroy_image(g->x.mlx, g->el.cr[i].img);
-		g->el.wl[i].addr = NULL;
-		g->el.cr[i++].addr = NULL;
-	}
 	return (0);
 }
 
@@ -76,4 +59,41 @@ int	load_elements(t_game *g, t_mapel *mel)
 	if (!mel->ghblink.addr)
 		return (1);
 	return (0);
+}
+
+int	destroy_map_el(t_game *g)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		x_destroy_img(*g, &g->el.wl[i]);
+		x_destroy_img(*g, &g->el.cr[i++]);
+	}
+	x_destroy_img(*g, &g->el.blinky);
+	x_destroy_img(*g, &g->el.inky);
+	x_destroy_img(*g, &g->el.clyde);
+	x_destroy_img(*g, &g->el.pinky);
+	x_destroy_img(*g, &g->el.fruits);
+	x_destroy_img(*g, &g->el.pill);
+	x_destroy_img(*g, &g->el.pacman);
+	return (1);
+}
+
+int	destroy_move_el(t_game *g)
+{
+	x_destroy_img(*g, &g->el.pmup);
+	x_destroy_img(*g, &g->el.pmdw);
+	x_destroy_img(*g, &g->el.pmlf);
+	x_destroy_img(*g, &g->el.pmrg);
+	x_destroy_img(*g, &g->el.ghblink);
+	return (1);
+}
+
+int	destroy_elements(t_game *g)
+{
+	destroy_map_el(g);
+	destroy_move_el(g);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:54:44 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 13:53:28 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:44:09 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	move_up(t_game *g)
 			cpm = get_sprite_n(g, g->el.pmup, i);
 			black_img(cpm);
 			xy[1] = (g->py) * g->dim + 2 - i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmup, ++i % 4);
 			xy[1] = g->py * g->dim + 2 - i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
 		}
@@ -57,11 +57,11 @@ int	move_dw(t_game *g)
 			cpm = get_sprite_n(g, g->el.pmdw, i);
 			black_img(cpm);
 			xy[1] = (g->py) * g->dim + 2 + i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmdw, ++i % 4);
 			xy[1] = g->py * g->dim + 2 + i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
 		}
@@ -86,11 +86,11 @@ int	move_lf(t_game *g)
 			cpm = get_sprite_n(g, g->el.pmlf, i);
 			black_img(cpm);
 			xy[0] = (g->px) * g->dim + 2 - i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmlf, ++i % 4);
 			xy[0] = g->px * g->dim + 2 - i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
 		}
@@ -115,11 +115,11 @@ int	move_rg(t_game *g)
 			cpm = get_sprite_n(g, g->el.pmrg, i);
 			black_img(cpm);
 			xy[0] = (g->px) * g->dim + 2 + i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmrg, ++i % 4);
 			xy[0] = g->px * g->dim + 2 + i * 11;
-			x_img_to_win(*g, cpm, xy, 1);
+			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
 		}

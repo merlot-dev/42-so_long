@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 13:56:49 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:17:43 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,9 @@ int		draw_coll(t_game *g, int row, int col, t_mapel el);
 int		draw_pacman(t_game *g, int row, int col);
 int		draw_gameover(t_game *g);
 int		load_elements(t_game *g, t_mapel *mel);
+int		destroy_elements(t_game *g);
 int		key_moves(int keycode, t_game *g);
-int		x_img_to_win(t_game g, t_img im, int xy[2], int destroy);
-void	x_destroy_img(t_game g, t_img im);
+int		x_img_to_win(t_game g, t_img *im, int xy[2], int destroy);
+void	x_destroy_img(t_game g, t_img *im);
 
 #endif
