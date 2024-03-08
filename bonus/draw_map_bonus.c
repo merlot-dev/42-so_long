@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:01:38 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 13:01:43 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:14:51 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	draw_pacman(t_game *g, int row, int col)
 	int		px;
 	int		py;
 
-	px = col * g->dim + 2;
-	py = row * g->dim + 2;
+	px = col * g->dim + (g->dim / 22);
+	py = row * g->dim + (g->dim / 22);
 	mlx_put_image_to_window(g->x.mlx, g->x.win, g->el.pacman.img, px, py);
 	g->px = col;
 	g->py = row;
@@ -30,8 +30,8 @@ int	draw_pill(t_game *g, int row, int col)
 	int		px;
 	int		py;
 
-	px = col * g->dim + 2;
-	py = row * g->dim + 2;
+	px = col * g->dim + (g->dim / 22);
+	py = row * g->dim + (g->dim / 22);
 	mlx_put_image_to_window(g->x.mlx, g->x.win, g->el.pill.img, px, py);
 	return (0);
 }

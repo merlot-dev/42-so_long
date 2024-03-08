@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:03:52 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 13:04:04 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:13:35 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	move_up(t_game *g)
 	if (g->m.maps[g->py - 1][g->px] != '1')
 	{
 		draw_moves(*g, ++g->mv);
-		xy[0] = g->px * g->dim + 2;
+		xy[0] = g->px * g->dim + (g->dim / 22);
 		i = 0;
 		while (i < 4)
 		{
 			cpm = get_sprite_n(g, g->el.pmup, i);
 			black_img(cpm);
-			xy[1] = (g->py) * g->dim + 2 - i * 11;
+			xy[1] = (g->py) * g->dim + (g->dim / 22) - i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmup, ++i % 4);
-			xy[1] = g->py * g->dim + 2 - i * 11;
+			xy[1] = g->py * g->dim + (g->dim / 22) - i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
@@ -50,17 +50,17 @@ int	move_dw(t_game *g)
 	if (g->m.maps[g->py + 1][g->px] != '1')
 	{
 		draw_moves(*g, ++g->mv);
-		xy[0] = g->px * g->dim + 2;
+		xy[0] = g->px * g->dim + (g->dim / 22);
 		i = 0;
 		while (i < 4)
 		{
 			cpm = get_sprite_n(g, g->el.pmdw, i);
 			black_img(cpm);
-			xy[1] = (g->py) * g->dim + 2 + i * 11;
+			xy[1] = (g->py) * g->dim + (g->dim / 22) + i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmdw, ++i % 4);
-			xy[1] = g->py * g->dim + 2 + i * 11;
+			xy[1] = g->py * g->dim + (g->dim / 22) + i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
@@ -79,17 +79,17 @@ int	move_lf(t_game *g)
 	if (g->m.maps[g->py][g->px - 1] != '1')
 	{
 		draw_moves(*g, ++g->mv);
-		xy[1] = g->py * g->dim + 2;
+		xy[1] = g->py * g->dim + (g->dim / 22);
 		i = 0;
 		while (i < 4)
 		{
 			cpm = get_sprite_n(g, g->el.pmlf, i);
 			black_img(cpm);
-			xy[0] = (g->px) * g->dim + 2 - i * 11;
+			xy[0] = (g->px) * g->dim + (g->dim / 22) - i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmlf, ++i % 4);
-			xy[0] = g->px * g->dim + 2 - i * 11;
+			xy[0] = g->px * g->dim + (g->dim / 22) - i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);
@@ -108,17 +108,17 @@ int	move_rg(t_game *g)
 	if (g->m.maps[g->py][g->px + 1] != '1')
 	{
 		draw_moves(*g, ++g->mv);
-		xy[1] = g->py * g->dim + 2;
+		xy[1] = g->py * g->dim + (g->dim / 22);
 		i = 0;
 		while (i < 4)
 		{
 			cpm = get_sprite_n(g, g->el.pmrg, i);
 			black_img(cpm);
-			xy[0] = (g->px) * g->dim + 2 + i * 11;
+			xy[0] = (g->px) * g->dim + (g->dim / 22) + i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			cpm = get_sprite_n(g, g->el.pmrg, ++i % 4);
-			xy[0] = g->px * g->dim + 2 + i * 11;
+			xy[0] = g->px * g->dim + (g->dim / 22) + i * 11;
 			x_img_to_win(*g, &cpm, xy, 1);
 			mlx_do_sync(g->x.mlx);
 			usleep(100000);

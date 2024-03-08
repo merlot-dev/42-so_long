@@ -83,7 +83,8 @@ do_bonus: $(NAME)
 	@touch .do_bonus
 
 ga:
-	git add Makefile $(SRCS) $(HEADS) $(BONUSS) $(HEADBS) sprites/*.xpm *.ber
+	git add Makefile $(SRCS) $(HEADS) $(BONUSS) $(HEADBS) *.ber
+	git add sprites/*.xpm sprites/dim22/*.xpm
 	@make --no-print-directory -C $(LIBFTHD) ga
 
 gp:

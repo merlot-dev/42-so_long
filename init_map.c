@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:43:29 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 14:44:41 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:19:39 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_map(t_game *g)
 {
-	if (g->m.cols > 22 || g->m.rows > 18)
+	if (g->m.cols > 37 || g->m.rows > 24)
 		return (sl_error_free(&g->m, "Map is OK but big to be playable\n"));
 	g->dim = CELLDIM;
 	g->x.winx = g->dim * g->m.cols + 280;

@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:00:18 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 13:00:37 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:06:36 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	draw_coll(t_game *g, int row, int col, t_mapel el)
 	int	x;
 	int	y;
 
-	x = col * g->dim + 2;
-	y = row * g->dim + 2;
+	x = col * g->dim + (g->dim / 22);
+	y = row * g->dim + (g->dim / 22);
 	i = g->mv++ % 4;
 	if (i == 0)
 		mlx_put_image_to_window(g->x.mlx, g->x.win, el.blinky.img, x, y);

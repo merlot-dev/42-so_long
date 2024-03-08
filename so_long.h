@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 14:47:53 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:16:55 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define WINDOWX 1280
-# define WINDOWY 800
+# define WINDOWX 1920
+# define WINDOWY 1080
 # define SIDEX 280
 
 # define CELLDIM 44
