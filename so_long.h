@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:11:54 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 16:17:43 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:47:53 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 # define INKY "sprites/ghost-blue.xpm"
 # define CLYDE "sprites/ghost-orange.xpm"
 # define PINKY "sprites/ghost-pink.xpm"
-# define GHBLINK  "sprites/ghost-blink.xpm"
 # define PILL "sprites/pill.xpm"
 # define FRUITS "sprites/pm-fruits.xpm"
 # define PMUP "sprites/pacman-up.xpm"
@@ -97,15 +96,10 @@ typedef struct s_mapel
 	t_img	inky;
 	t_img	clyde;
 	t_img	pinky;
-	t_img	ghblink;
+	t_img	black;
 	t_img	fruits;
 	t_img	pill;
-	t_img	pmup;
-	t_img	pmdw;
-	t_img	pmlf;
-	t_img	pmrg;
 	t_img	pacman;
-	t_img	nbr;
 }			t_mapel;
 
 typedef struct s_game
@@ -132,7 +126,8 @@ t_img	cut_img(t_mlx mx, t_img im, int st[2], int sz[2]);
 void	black_img(t_img im);
 t_img	get_sprite_n(t_game *g, t_img sp, int n);
 int		draw_map(t_game *g);
-int		draw_sidescr(t_game g, t_mapel el);
+int		init_map(t_game *g);
+int		draw_sidescr(t_game g);
 int		draw_nbr(t_game g, int nbr, int xy[2], t_mapel el);
 int		draw_moves(t_game g, int mvs);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);

@@ -27,7 +27,7 @@ SRCS =  so_long.c sl_load_map.c check_path.c init_map.c \
 		load_elements.c \
 		sl_error.c
 HEADD = ./
-HEAD = so_long.h
+HEADS = so_long.h
 else
 SRCS = $(BONUSS)
 HEADD = $(HEADBD)
