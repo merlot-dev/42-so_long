@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   x_tools.c                                          :+:      :+:    :+:   */
+/*   x_tools_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 22:29:17 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 12:20:10 by josegar2         ###   ########.fr       */
+/*   Created: 2024/03/08 14:08:11 by josegar2          #+#    #+#             */
+/*   Updated: 2024/03/08 14:08:23 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	x_destroy_img(t_game g, t_img *im)
 {
-	if (im->addr != NULL)
-	{
+	if (!im->addr)
 		mlx_destroy_image(g.x.mlx, im->img);
-		im->addr = NULL;
-	}
+	im->addr = NULL;
 }
 
 int	x_img_to_win(t_game g, t_img *im, int xy[2], int destroy)

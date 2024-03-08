@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:54:44 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/07 15:44:09 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:17:33 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,116 +14,64 @@
 
 int	move_up(t_game *g)
 {
-	int		i;
 	int		xy[2];
-	t_img	cpm;
 
 	if (g->m.maps[g->py - 1][g->px] != '1')
 	{
 		draw_moves(*g, ++g->mv);
 		xy[0] = g->px * g->dim + 2;
-		i = 0;
-		while (i < 4)
-		{
-			cpm = get_sprite_n(g, g->el.pmup, i);
-			black_img(cpm);
-			xy[1] = (g->py) * g->dim + 2 - i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			cpm = get_sprite_n(g, g->el.pmup, ++i % 4);
-			xy[1] = g->py * g->dim + 2 - i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			usleep(100000);
-		}
-		g->py--;
+		xy[1] = g->py * g->dim + 2;
+		x_img_to_win(*g, &g->el.black, xy, 0);
+		xy[1] = (--g->py) * g->dim + 2;
+		x_img_to_win(*g, &g->el.pacman, xy, 0);
 	}
 	return (0);
 }
 
 int	move_dw(t_game *g)
 {
-	int		i;
 	int		xy[2];
-	t_img	cpm;
 
 	if (g->m.maps[g->py + 1][g->px] != '1')
 	{
 		draw_moves(*g, ++g->mv);
 		xy[0] = g->px * g->dim + 2;
-		i = 0;
-		while (i < 4)
-		{
-			cpm = get_sprite_n(g, g->el.pmdw, i);
-			black_img(cpm);
-			xy[1] = (g->py) * g->dim + 2 + i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			cpm = get_sprite_n(g, g->el.pmdw, ++i % 4);
-			xy[1] = g->py * g->dim + 2 + i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			usleep(100000);
-		}
-		g->py++;
+		xy[1] = g->py * g->dim + 2;
+		x_img_to_win(*g, &g->el.black, xy, 0);
+		xy[1] = (++g->py) * g->dim + 2;
+		x_img_to_win(*g, &g->el.pacman, xy, 0);
 	}
 	return (0);
 }
 
 int	move_lf(t_game *g)
 {
-	int		i;
 	int		xy[2];
-	t_img	cpm;
 
 	if (g->m.maps[g->py][g->px - 1] != '1')
 	{
 		draw_moves(*g, ++g->mv);
+		xy[0] = g->px * g->dim + 2;
 		xy[1] = g->py * g->dim + 2;
-		i = 0;
-		while (i < 4)
-		{
-			cpm = get_sprite_n(g, g->el.pmlf, i);
-			black_img(cpm);
-			xy[0] = (g->px) * g->dim + 2 - i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			cpm = get_sprite_n(g, g->el.pmlf, ++i % 4);
-			xy[0] = g->px * g->dim + 2 - i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			usleep(100000);
-		}
-		g->px--;
+		x_img_to_win(*g, &g->el.black, xy, 0);
+		xy[0] = (--g->px) * g->dim + 2;
+		x_img_to_win(*g, &g->el.pacman, xy, 0);
 	}
 	return (0);
 }
 
 int	move_rg(t_game *g)
 {
-	int		i;
 	int		xy[2];
-	t_img	cpm;
 
 	if (g->m.maps[g->py][g->px + 1] != '1')
 	{
 		draw_moves(*g, ++g->mv);
+		xy[0] = g->px * g->dim + 2;
 		xy[1] = g->py * g->dim + 2;
-		i = 0;
-		while (i < 4)
-		{
-			cpm = get_sprite_n(g, g->el.pmrg, i);
-			black_img(cpm);
-			xy[0] = (g->px) * g->dim + 2 + i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			cpm = get_sprite_n(g, g->el.pmrg, ++i % 4);
-			xy[0] = g->px * g->dim + 2 + i * 11;
-			x_img_to_win(*g, &cpm, xy, 1);
-			mlx_do_sync(g->x.mlx);
-			usleep(100000);
-		}
-		g->px++;
+		x_img_to_win(*g, &g->el.black, xy, 0);
+		xy[0] = (++g->px) * g->dim + 2;
+		x_img_to_win(*g, &g->el.pacman, xy, 0);
 	}
 	return (0);
 }

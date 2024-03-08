@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_elements.c                                    :+:      :+:    :+:   */
+/*   load_elements_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 00:52:26 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 12:43:24 by josegar2         ###   ########.fr       */
+/*   Created: 2024/03/08 13:04:22 by josegar2          #+#    #+#             */
+/*   Updated: 2024/03/08 13:04:32 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	load_wall_el(t_game *g, t_mapel *mel)
 {
@@ -28,6 +28,9 @@ int	load_wall_el(t_game *g, t_mapel *mel)
 	if (!mel->cr[0].addr || !mel->cr[1].addr || !mel->cr[2].addr
 		|| !mel->cr[3].addr)
 		return (1);
+	mel->nbr = get_xpm_img(g->x, NUMBERS);
+	if (!mel->nbr.addr)
+		return (1);
 	return (0);
 }
 
@@ -44,11 +47,16 @@ int	load_elements(t_game *g, t_mapel *mel)
 	if (!mel->blinky.addr || !mel->inky.addr || !mel->clyde.addr
 		|| !mel->pinky.addr || !mel->fruits.addr || !mel->pill.addr)
 		return (1);
+	mel->pmup = get_xpm_img(g->x, PMUP);
+	mel->pmdw = get_xpm_img(g->x, PMDW);
+	mel->pmlf = get_xpm_img(g->x, PMLF);
+	mel->pmrg = get_xpm_img(g->x, PMRG);
 	mel->pacman = get_xpm_img(g->x, PACMAN);
-	if (!mel->pacman.addr)
+	if (!mel->pmup.addr || !mel->pmdw.addr || !mel->pmlf.addr
+		|| !mel->pmrg.addr || !mel->pacman.addr)
 		return (1);
-	mel->black = get_xpm_img(g->x, BLACK);
-	if (!mel->black.addr)
+	mel->ghblink = get_xpm_img(g->x, GHBLINK);
+	if (!mel->ghblink.addr)
 		return (1);
 	return (0);
 }
@@ -69,13 +77,17 @@ int	destroy_map_el(t_game *g)
 	x_destroy_img(*g, &g->el.pinky);
 	x_destroy_img(*g, &g->el.fruits);
 	x_destroy_img(*g, &g->el.pill);
+	x_destroy_img(*g, &g->el.pacman);
 	return (1);
 }
 
 int	destroy_move_el(t_game *g)
 {
-	x_destroy_img(*g, &g->el.pacman);
-	x_destroy_img(*g, &g->el.black);
+	x_destroy_img(*g, &g->el.pmup);
+	x_destroy_img(*g, &g->el.pmdw);
+	x_destroy_img(*g, &g->el.pmlf);
+	x_destroy_img(*g, &g->el.pmrg);
+	x_destroy_img(*g, &g->el.ghblink);
 	return (1);
 }
 

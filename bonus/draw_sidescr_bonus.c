@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_sidescr.c                                     :+:      :+:    :+:   */
+/*   draw_sidescr_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 21:04:18 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 12:33:17 by josegar2         ###   ########.fr       */
+/*   Created: 2024/03/08 13:02:06 by josegar2          #+#    #+#             */
+/*   Updated: 2024/03/08 13:02:10 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-int	draw_sidescr(t_game g)
+int	draw_sidescr(t_game g, t_mapel el)
 {
 	t_img	im;
 	int		xy[2];
@@ -23,6 +23,16 @@ int	draw_sidescr(t_game g)
 	xy[0] = g.x.winx - SIDEX;
 	xy[1] = 0;
 	x_img_to_win(g, &im, xy, 1);
+	im = get_xpm_img(g.x, MOVES);
+	if (!im.addr)
+		return (1);
+	xy[0] = g.x.winx - SIDEX + 20;
+	xy[1] = 80;
+	x_img_to_win(g, &im, xy, 1);
+	xy[0] = g.x.winx - SIDEX + 80;
+	xy[1] = 110;
+	if (draw_nbr(g, 0, xy, el))
+		return (1);
 	im = get_xpm_img(g.x, "sprites/txt-instruction.xpm");
 	if (!im.addr)
 		return (1);
@@ -43,6 +53,32 @@ int	draw_gameover(t_game *g)
 	return (0);
 }
 
+int	draw_nbr(t_game g, int nbr, int xy[2], t_mapel el)
+{
+	int		dig;
+	int		cxy[2];
+	int		sxy[2];
+	t_img	di;
+
+	sxy[0] = 20;
+	sxy[1] = 10;
+	cxy[1] = 0;
+	dig = 6;
+	xy[0] += dig * sxy[0];
+	while (dig)
+	{
+		cxy[0] = (nbr % 10) * sxy[0];
+		di = cut_img(g.x, el.nbr, cxy, sxy);
+		if (!di.addr)
+			return (1);
+		x_img_to_win(g, &di, xy, 1);
+		nbr /= 10;
+		dig--;
+		xy[0] -= sxy[0];
+	}
+	return (0);
+}
+
 int	draw_moves(t_game g, int mvs)
 {
 	int	xy[2];
@@ -50,5 +86,5 @@ int	draw_moves(t_game g, int mvs)
 	xy[0] = g.x.winx - SIDEX + 80;
 	xy[1] = 110;
 	ft_printf("MOVES: %6d\n", mvs);
-	return (0);
+	return (draw_nbr(g, mvs, xy, g.el));
 }

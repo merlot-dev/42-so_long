@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   draw_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 22:22:08 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 12:32:19 by josegar2         ###   ########.fr       */
+/*   Created: 2024/03/08 13:01:38 by josegar2          #+#    #+#             */
+/*   Updated: 2024/03/08 13:01:43 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	draw_pacman(t_game *g, int row, int col)
 {
@@ -82,7 +82,7 @@ int	draw_map(t_game *g)
 
 	if (load_elements(g, &g->el))
 		return (destroy_elements(g));
-	if (draw_sidescr(*g))
+	if (draw_sidescr(*g, g->el))
 		return (destroy_elements(g));
 	i = 0;
 	while (i < g->m.rows)
