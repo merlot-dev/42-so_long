@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:05:49 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 17:17:41 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:33:06 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 # define INKY "sprites/ghost-blue.xpm"
 # define CLYDE "sprites/ghost-orange.xpm"
 # define PINKY "sprites/ghost-pink.xpm"
-# define GHBLINK  "sprites/ghost-blink.xpm"
 # define PILL "sprites/pill.xpm"
 # define FRUITS "sprites/pm-fruits.xpm"
 # define PMUP "sprites/pacman-up.xpm"
@@ -55,6 +54,7 @@
 # define PMLF "sprites/pacman-lf.xpm"
 # define PMRG "sprites/pacman-rg.xpm"
 # define BLACK "sprites/black.xpm"
+# define FIRE "sprites/fire.xpm"
 
 typedef struct s_mlx
 {
@@ -97,7 +97,6 @@ typedef struct s_mapel
 	t_img	inky;
 	t_img	clyde;
 	t_img	pinky;
-	t_img	ghblink;
 	t_img	fruits;
 	t_img	pill;
 	t_img	pmup;
@@ -105,8 +104,17 @@ typedef struct s_mapel
 	t_img	pmlf;
 	t_img	pmrg;
 	t_img	pacman;
+	t_img	fire;
 	t_img	nbr;
 }			t_mapel;
+
+typedef struct s_pmove
+{
+	t_img	*spr;
+	int		n;
+	int		ox;
+	int		oy;
+}			t_pmove;
 
 typedef struct s_game
 {
@@ -115,6 +123,7 @@ typedef struct s_game
 	t_img	gi;	// game image
 	t_map	m;
 	t_mapel	el;
+	t_pmove	pm;
 	int		dim;
 	int		px;
 	int		py;
@@ -139,6 +148,7 @@ int		draw_moves(t_game g, int mvs);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
 int		draw_pacman(t_game *g, int row, int col);
+int		draw_fire(t_game *g);
 int		draw_gameover(t_game *g);
 int		load_elements(t_game *g, t_mapel *mel);
 int		destroy_elements(t_game *g);

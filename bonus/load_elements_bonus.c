@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:04:22 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 13:04:32 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:20:58 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	load_elements(t_game *g, t_mapel *mel)
 	if (!mel->pmup.addr || !mel->pmdw.addr || !mel->pmlf.addr
 		|| !mel->pmrg.addr || !mel->pacman.addr)
 		return (1);
-	mel->ghblink = get_xpm_img(g->x, GHBLINK);
-	if (!mel->ghblink.addr)
+	mel->fire = get_xpm_img(g->x, FIRE);
+	if (!mel->fire.addr)
 		return (1);
 	return (0);
 }
@@ -87,7 +87,7 @@ int	destroy_move_el(t_game *g)
 	x_destroy_img(*g, &g->el.pmdw);
 	x_destroy_img(*g, &g->el.pmlf);
 	x_destroy_img(*g, &g->el.pmrg);
-	x_destroy_img(*g, &g->el.ghblink);
+	x_destroy_img(*g, &g->el.fire);
 	return (1);
 }
 

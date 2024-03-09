@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:02:36 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 14:47:14 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:33:15 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	check_file_name(char *fn)
 	return ((int)ft_free(ext));
 }
 
-int	exit_game(int keycode, t_game *g)
+int	exit_game(t_game *g)
 {
-	keycode += 0;
 	if (g)
 		exit(0);
 	else
@@ -45,12 +44,13 @@ int	hook_handler(int keycode, t_game *g)
 	{
 		destroy_elements(g);
 		mlx_destroy_window(g->x.mlx, g->x.win);
-		exit_game(keycode, g);
+		exit_game(g);
 	}
 	if (key_moves(keycode, g))
 	{
+		destroy_elements(g);
 		mlx_destroy_window(g->x.mlx, g->x.win);
-		exit_game(keycode, g);
+		exit_game(g);
 	}
 	return (0);
 }

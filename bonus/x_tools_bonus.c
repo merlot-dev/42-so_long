@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:08:11 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 14:08:23 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:09:40 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	x_destroy_img(t_game g, t_img *im)
 {
-	if (!im->addr)
+	if (im->addr != NULL)
+	{
 		mlx_destroy_image(g.x.mlx, im->img);
-	im->addr = NULL;
+		im->addr = NULL;
+	}
 }
 
 int	x_img_to_win(t_game g, t_img *im, int xy[2], int destroy)
