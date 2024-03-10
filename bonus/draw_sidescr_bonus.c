@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:02:06 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 17:10:37 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/11 00:00:18 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	draw_sidescr(t_game g, t_mapel el)
 	xy[1] = 110;
 	if (draw_nbr(g, 0, xy, el))
 		return (1);
-	im = get_xpm_img(g.x, "sprites/txt-instruction.xpm");
+	im = get_xpm_img(g.x, "sprites/txt-inst-bonus.xpm");
 	if (!im.addr)
 		return (1);
 	xy[0] = g.x.winx - SIDEX + 10;
-	xy[1] = g.x.winy - 70;
+	xy[1] = g.x.winy - 75;
 	return (x_img_to_win(g, &im, xy, 1));
 }
 
@@ -87,6 +87,5 @@ int	draw_moves(t_game g, int mvs)
 
 	xy[0] = g.x.winx - SIDEX + 80;
 	xy[1] = 110;
-	ft_printf("MOVES: %6d\n", mvs);
 	return (draw_nbr(g, mvs, xy, g.el));
 }
