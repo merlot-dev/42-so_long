@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:05:49 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 16:58:28 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:34:11 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ typedef struct s_mlx
 	void	*win;
 	int		winx;
 	int		winy;
-	int		row;
-	int		col;
 }			t_mlx;
 
 typedef struct s_img
@@ -146,13 +144,14 @@ t_img	get_sprite_n(t_game *g, t_img sp, int n);
 int		init_map(t_game *g);
 int		draw_map(t_game *g);
 int		draw_sidescr(t_game g, t_mapel el);
+int		draw_gameover(t_game *g);
 int		draw_nbr(t_game g, int nbr, int xy[2], t_mapel el);
 int		draw_moves(t_game g, int mvs);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
 int		draw_pacman(t_game *g, int row, int col);
+int		draw_fire(t_game *g, int n);
 int		sl_anime(t_game *g);
-int		draw_gameover(t_game *g);
 int		load_elements(t_game *g, t_mapel *mel);
 int		destroy_elements(t_game *g);
 int		key_moves(int keycode, t_game *g);

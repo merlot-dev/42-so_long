@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:03:52 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 00:19:16 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:01:46 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	move_up(t_game *g)
 	if (!g->pm.spr && g->m.maps[g->py - 1][g->px] != '1')
 	{
 		draw_moves(*g, ++g->mv);
-		g->pm.oy = - 1;
+		g->pm.oy = -1;
 		g->pm.spr = &g->el.pmup;
 	}
 	return (0);
@@ -39,7 +39,7 @@ int	move_lf(t_game *g)
 	if (!g->pm.spr && g->m.maps[g->py][g->px - 1] != '1')
 	{
 		draw_moves(*g, ++g->mv);
-		g->pm.ox = - 1;
+		g->pm.ox = -1;
 		g->pm.spr = &g->el.pmlf;
 	}
 	return (0);

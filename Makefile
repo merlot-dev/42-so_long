@@ -9,7 +9,7 @@ BONUSC = so_long_bonus.c sl_load_map_bonus.c check_path_bonus.c \
 		 init_map_bonus.c \
 		 draw_map_bonus.c draw_wall_bonus.c draw_coll_bonus.c \
 		 draw_sidescr_bonus.c \
-		 draw_fire_bonus.c \
+		 sl_anime_bonus.c draw_fire_bonus.c \
 		 key_moves_bonus.c \
 		 img_tools_bonus.c x_tools_bonus.c \
 		 load_elements_bonus.c \
@@ -77,7 +77,7 @@ bonus:
 ifeq ("$(wildcard .do_bonus)","")
 	@$(RM) $(NAME)
 endif
-	make --no-print-directory BONUS=1 do_bonus
+	@make --no-print-directory BONUS=1 do_bonus
 
 do_bonus: $(NAME)
 	@echo "Bonus so_long available"
