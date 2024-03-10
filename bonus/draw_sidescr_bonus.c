@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:02:06 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 00:22:31 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:10:37 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	draw_gameover(t_game *g)
 	xy[0] = g->x.winx - SIDEX + 50;
 	xy[1] = g->x.winy / 2;
 	im = get_xpm_img(g->x, GAMEOVER);
+	if (!im.addr)
+		return (1);
 	x_img_to_win(*g, &im, xy, 1);
 	return (0);
 }

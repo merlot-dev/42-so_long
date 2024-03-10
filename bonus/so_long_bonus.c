@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:05:22 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/09 20:40:59 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:53:50 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ int	main(int argc, char **argv)
 	}
 	mlx_hook(g.x.win, 2, 0, hook_handler, &g);
 	mlx_hook(g.x.win, 17, 0, exit_game, &g);
-	mlx_loop_hook(g.x.mlx, draw_fire, &g);
+	mlx_loop_hook(g.x.mlx, sl_anime, &g);
 	mlx_loop(g.x.mlx);
 }

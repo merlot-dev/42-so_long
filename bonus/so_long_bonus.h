@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:05:49 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/09 23:33:06 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:58:28 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define PMDW "sprites/pacman-dw.xpm"
 # define PMLF "sprites/pacman-lf.xpm"
 # define PMRG "sprites/pacman-rg.xpm"
+# define DEAD "sprites/pacman-dead.xpm"
 # define BLACK "sprites/black.xpm"
 # define FIRE "sprites/fire.xpm"
 
@@ -104,6 +105,7 @@ typedef struct s_mapel
 	t_img	pmlf;
 	t_img	pmrg;
 	t_img	pacman;
+	t_img	dead;
 	t_img	fire;
 	t_img	nbr;
 }			t_mapel;
@@ -129,6 +131,7 @@ typedef struct s_game
 	int		py;
 	int		mv;
 	int		gover;
+	int		dead;
 }			t_game;
 
 int		sl_error(const char *info);
@@ -148,7 +151,7 @@ int		draw_moves(t_game g, int mvs);
 int		draw_wall(t_game *g, int row, int col, t_mapel el);
 int		draw_coll(t_game *g, int row, int col, t_mapel el);
 int		draw_pacman(t_game *g, int row, int col);
-int		draw_fire(t_game *g);
+int		sl_anime(t_game *g);
 int		draw_gameover(t_game *g);
 int		load_elements(t_game *g, t_mapel *mel);
 int		destroy_elements(t_game *g);
