@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:16:17 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/11 16:35:25 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:45:35 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	draw_fire(t_game *g, int n)
 	}
 	if (g->dead == 11)
 	{
-		xy[0] = g->x.winx - SIDEX;
-		xy[1] = g->x.winy / 2 + 10;
+		xy[0] = g->x.winx - SIDEX + 5;
+		xy[1] = g->x.winy / 2 + 5;
 		x_img_to_win(*g, &cpm, xy, 0);
 	}
 	x_destroy_img(*g, &cpm);
