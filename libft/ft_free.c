@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:49:06 by josegar2          #+#    #+#             */
-/*   Updated: 2024/02/26 01:01:00 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:42:14 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	*ft_free(void *p)
 {
-	free(p);
+	if (p)
+		free(p);
 	return (NULL);
 }

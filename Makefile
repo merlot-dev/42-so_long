@@ -49,6 +49,8 @@ all:
 ifneq ("$(wildcard .do_bonus)","")
 	@$(RM) $(NAME) .do_bonus
 endif
+	@make --no-print-directory -C $(LIBFTHD) | sed  '/Nothing to be done/d'
+	@make --no-print-directory -C $(MLXD) | sed '/Nothing to be done/d'
 	@make --no-print-directory mandatory
 
 mandatory: $(NAME)
@@ -68,7 +70,7 @@ clean:
 	@make --no-print-directory -C $(MLXD) clean
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) .do_bonus
 	@make --no-print-directory -C $(LIBFTHD) fclean
 
 re: fclean all
@@ -77,6 +79,8 @@ bonus:
 ifeq ("$(wildcard .do_bonus)","")
 	@$(RM) $(NAME)
 endif
+	@make --no-print-directory -C $(LIBFTHD) | sed  '/Nothing to be done/d'
+	@make --no-print-directory -C $(MLXD) | sed '/Nothing to be done/d'
 	@make --no-print-directory BONUS=1 do_bonus
 
 do_bonus: $(NAME)
@@ -84,7 +88,7 @@ do_bonus: $(NAME)
 	@touch .do_bonus
 
 ga:
-	git add Makefile $(SRCS) $(HEADS) $(BONUSS) $(HEADBS) *.ber
+	git add Makefile $(SRCS) $(HEADS) $(BONUSS) $(HEADBS) maps/*.ber
 	git add sprites/*.xpm sprites/dim22/*.xpm
 	@make --no-print-directory -C $(LIBFTHD) ga
 

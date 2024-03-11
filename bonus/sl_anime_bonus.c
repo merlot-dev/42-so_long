@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:16:17 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 20:01:03 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:38:24 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ int	draw_dead(t_game *g)
 	t_img				cpm;
 	int					xy[2];
 
-	if (g->dead)
+	if (g->dead && g->dead < 11)
 	{
 		cpm = get_sprite_n(g, g->el.dead, g->dead++);
 		xy[0] = g->px * g->dim + g->dim / 22;
 		xy[1] = g->py * g->dim + g->dim / 22;
 		x_img_to_win(*g, &cpm, xy, 1);
-		g->dead *= (g->dead != 11);
 	}
 	return (0);
 }
@@ -69,9 +68,9 @@ int	sl_anime(t_game *g)
 	static unsigned int	frame;
 
 	frame++;
-	if (! (frame % 1024))
+	if (! (frame % FRAMES))
 	{
-		draw_fire(g, (frame / 1024) % 5);
+		draw_fire(g, (frame / FRAMES) % 5);
 		move_pc(g);
 		draw_dead(g);
 	}

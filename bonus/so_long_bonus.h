@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:05:49 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 19:34:11 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:21:27 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define SIDEX 280
 
 # define CELLDIM 44
+
+# define FRAMES 512
 
 # define TITLE "sprites/pacman-revenge.xpm"
 # define MOVES "sprites/txt-moves.xpm"
