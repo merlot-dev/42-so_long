@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:05:22 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/10 16:53:50 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:01:17 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ int	check_file_name(char *fn)
 
 int	exit_game(t_game *g)
 {
-	if (g)
-		exit(0);
-	else
-		exit(0);
+	destroy_elements(g);
+	mlx_destroy_window(g->x.mlx, g->x.win);
+	exit(0);
 }
 
 // left: 123, right:124, up:126, down:125
@@ -42,14 +41,10 @@ int	hook_handler(int keycode, t_game *g)
 {
 	if (keycode == 53)
 	{
-		destroy_elements(g);
-		mlx_destroy_window(g->x.mlx, g->x.win);
 		exit_game(g);
 	}
 	if (key_moves(keycode, g))
 	{
-		destroy_elements(g);
-		mlx_destroy_window(g->x.mlx, g->x.win);
 		exit_game(g);
 	}
 	return (0);
