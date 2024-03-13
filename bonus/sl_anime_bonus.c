@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:16:17 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/11 16:38:24 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:27:30 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 void	move_pc_end(t_game *g)
 {
 	if (g->m.maps[g->py][g->px] == 'C')
+	{
+		g->m.coll--;
 		g->m.maps[g->py][g->px] = 'F';
+	}
 	g->px += g->pm.ox;
 	g->py += g->pm.oy;
 	g->pm.n = 0;
 	g->pm.ox = 0;
 	g->pm.oy = 0;
 	g->pm.spr = NULL;
+	if (g->px != g->m.endx || g->py != g->m.endy)
+		draw_exit(g, g->m.endy, g->m.endx);
 }
 
 int	move_pc(t_game *g)
@@ -79,7 +84,8 @@ int	sl_anime(t_game *g)
 		g->dead = 1;
 		g->m.maps[g->py][g->px] = 'C';
 	}
-	if (!g->gover && ((g->px == g->m.endx && g->py == g->m.endy) || g->dead))
+	if (!g->gover && ((g->px == g->m.endx && g->py == g->m.endy && !g->m.coll)
+		|| g->dead))
 		g->gover = draw_gameover(g) + 1;
 	return (0);
 }

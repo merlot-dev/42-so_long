@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:54:44 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 12:17:33 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:10:02 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,17 @@ int	key_moves(int keycode, t_game *g)
 		move_lf(g);
 	if (keycode == 124 && !g->gover)
 		move_rg(g);
-	if (g->px == g->m.endx && g->py == g->m.endy)
+	if (g->m.maps[g->py][g->px] == 'C')
+	{
+		g->m.coll--;
+		g->m.maps[g->py][g->px] = 'c';
+	}
+	if (g->px == g->m.endx && g->py == g->m.endy && !g->m.coll)
 	{
 		g->gover = 1;
 		draw_gameover(g);
 	}
+	if (g->px != g->m.endx || g->py != g->m.endy)
+		draw_exit(g, g->m.endy, g->m.endx);
 	return (0);
 }
