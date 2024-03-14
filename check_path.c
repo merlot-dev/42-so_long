@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:48:53 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/13 23:51:26 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:09:25 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	check_path(t_map *m)
 		i++;
 	}
 	c = m->coll;
-	//i = path_from(m->stx, m->sty, m, mvs);
 	i = flood_map(m->stx, m->sty, m, mvs);
 	m->coll = c;
 	free_mvs(m, mvs);

@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:04:45 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/08 13:04:58 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:14:24 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	get_rows(int fd, t_map *m)
 
 int	check_elements(t_map *m, int y, int x)
 {
+	if (!ft_strchr("10CEP", m->maps[y][x]))
+		return (sl_error_free(m, "Invalid char in map\n"));
 	if (m->maps[y][x] == 'P' && m->stx)
 		return (sl_error_free(m, "More than one start\n"));
 	m->sty += y * (m->maps[y][x] == 'P');

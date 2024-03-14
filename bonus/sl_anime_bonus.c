@@ -6,7 +6,7 @@
 /*   By: josegar2 <josegar2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:16:17 by josegar2          #+#    #+#             */
-/*   Updated: 2024/03/14 00:27:30 by josegar2         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:10:50 by josegar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	sl_anime(t_game *g)
 		g->m.maps[g->py][g->px] = 'C';
 	}
 	if (!g->gover && ((g->px == g->m.endx && g->py == g->m.endy && !g->m.coll)
-		|| g->dead))
+			|| g->dead))
 		g->gover = draw_gameover(g) + 1;
 	return (0);
 }
